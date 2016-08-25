@@ -1,9 +1,9 @@
 STEEMSTARS::Application.routes.draw do
-get '/' => 'pages#index'
-get '/users' => 'users#index'
-get '/users/new' => 'users#new'
-post '/users' => 'users#create'
-  # The priority is based upon order of creation:
+  resources :accounts, only: :show do
+  resources :followers, only: :index
+  end
+end
+    # The priority is based upon order of creation:
   # first created -> highest priority.
 
   # Sample of regular route:
@@ -59,4 +59,3 @@ post '/users' => 'users#create'
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
-end
