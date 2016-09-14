@@ -5,14 +5,15 @@ group :development do
 end
 
 gem 'radiator', github: 'inertia186/radiator'
+#gem 'rails', '3.2.21'
+gem 'rails', '4.2.5'
 
-gem 'rails', '4'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-
+gem 'node'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -42,3 +43,7 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+group :test do
+  gem 'test-unit', '~> 3.0'
+end
