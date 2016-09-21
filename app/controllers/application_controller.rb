@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  respond_to :js, :json
   protect_from_forgery with: :exception
   helper_method :api, :follow_api
   private

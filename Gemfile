@@ -1,13 +1,18 @@
 source 'https://rubygems.org'
-group :development do
-  gem 'better_errors'
-  gem 'binding_of_caller'
-end
+
+gem 'better_errors'
+gem 'binding_of_caller'
+gem 'test-unit'
+# gem 'byebug'
 
 gem 'radiator', github: 'inertia186/radiator'
-#gem 'rails', '3.2.21'
-gem 'rails', '4.2.5'
+gem 'rails', '>= 5.0.0.rc2', '< 5.1'
 
+# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem 'responders', '~> 2.2.0'
+
+# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem 'jbuilder', '~> 2.5'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -42,8 +47,6 @@ gem 'jquery-rails'
 # gem 'capistrano'
 
 # To use debugger
-# gem 'debugger'
 
-group :test do
-  gem 'test-unit', '~> 3.0'
-end
+
+
