@@ -1,0 +1,7 @@
+<center>
+  <h1>Account Name</h1>
+    <%= form_tag find_accounts_path, method: :get do %>
+    <p><%= text_field_tag 'account_name', '', placeholder: "Enter your account name" %></p>
+    <%= submit_tag 'Submit'%>
+  </center>
+<% end %>

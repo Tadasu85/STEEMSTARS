@@ -1,0 +1,15 @@
+<center>
+<h1>Account: <%= params[:account_id] %></h1>
+
+<p><%= pluralize(@followers.count, 'followers') %></p>
+
+<ul>
+  <% @followers.each do |follower| %>
+    <li><%= link_to follower, account_followers_path(account_id: follower.gsub('.', ',')) %></li>
+  <% end %>
+</ul>
+
+[
+<%= link_to "Previous", :back %>
+]
+</center>

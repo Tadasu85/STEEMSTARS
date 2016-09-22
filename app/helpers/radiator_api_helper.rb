@@ -1,0 +1,2 @@
+module RadiatorApiHelper
+end

@@ -1,0 +1,49 @@
+<center>
+<h1>Account: <%= @id %></h1>
+
+<p>
+  <strong>Created:</strong>
+  <%= time_ago_in_words Time.parse(@account.created) %>
+</p>
+
+<p>
+  <strong>Last Vote:</strong>
+  <%= time_ago_in_words Time.parse(@account.last_vote_time) %>
+</p>
+
+<p>
+  <strong>Last Post:</strong>
+  <%= time_ago_in_words Time.parse(@account.last_root_post) %>
+</p>
+
+<p>
+  <strong>Last Comment:</strong>
+  <%= time_ago_in_words Time.parse(@account.last_post) %>
+</p>
+
+<p>
+  <strong>STEEM Balance:</strong>
+  <%= @account.balance %>
+</p>
+
+<p>
+  <strong>SBD Balance:</strong>
+  <%= @account.sbd_balance %>
+</p>
+
+<p>
+  <strong>VESTS Balance:</strong>
+  <%= @account.vesting_shares %>
+</p>
+
+<p>
+  <strong>Witness Votes:</strong>
+  <%= @account.witness_votes.to_sentence %>
+</p>
+
+<p>
+  <strong>Global:</strong>
+</p>
+
+<%= link_to 'Followers', account_followers_path(params[:id]) %>
+</center>
