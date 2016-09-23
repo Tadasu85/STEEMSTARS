@@ -15,6 +15,6 @@ If you dont know what the steem network is check it out at steemit.com
 
 All work herein is free open source I operate under the Collaborative Commons License
 
-I need to also give much prop ups for alot of help so far to @intertia @https://github.com/inertia186
+I need to also give much prop ups for alot of help so far to @inertia @https://github.com/inertia186
 
 as well as the fact that the backend runs on his Radiator API for Steem.
