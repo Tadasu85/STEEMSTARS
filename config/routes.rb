@@ -8,4 +8,6 @@ Rails.application.routes.draw do
     resources :followers, only: :index
   end
   match ':controller(/:action(/:id))', :via => :get
+  
+  resources :follows, only: :index
 end
