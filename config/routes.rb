@@ -6,8 +6,9 @@ Rails.application.routes.draw do
       get :find
     end
     resources :followers, only: :index
+    resources :follows, only: :index
   end
   match ':controller(/:action(/:id))', :via => :get
   
-  resources :follows, only: :index
+  
 end
