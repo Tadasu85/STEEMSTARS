@@ -4,7 +4,7 @@ require 'rubygems'
 gem 'better_errors'
 gem 'binding_of_caller'
 gem 'test-unit'
-ruby "2.3.1"
+ruby "2.3.0"
 # gem 'byebug'
 
 gem 'radiator', github: 'inertia186/radiator'
@@ -20,7 +20,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-gem 'node'
+# gem 'node'
 
 # Gems used only for assets and not required
 # in production environments by default.

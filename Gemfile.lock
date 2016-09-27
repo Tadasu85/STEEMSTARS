@@ -66,7 +66,6 @@ GEM
     concurrent-ruby (1.0.2)
     debug_inspector (0.0.2)
     erubis (2.7.0)
-    eventmachine (1.2.0.1)
     execjs (2.7.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
@@ -96,8 +95,6 @@ GEM
     multi_json (1.12.1)
     net-http-persistent (2.9.4)
     nio4r (1.2.1)
-    node (0.0.2)
-      eventmachine
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
@@ -169,7 +166,6 @@ DEPENDENCIES
   coffee-rails
   jbuilder (~> 2.5)
   jquery-rails
-  node
   pg
   radiator!
   rails (>= 5.0.0.rc2, < 5.1)
@@ -177,6 +173,9 @@ DEPENDENCIES
   sass-rails
   test-unit
   uglifier (>= 1.0.3)
+
+RUBY VERSION
+   ruby 2.3.0p0
 
 BUNDLED WITH
    1.13.1
