@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+require 'rubygems'
 gem 'better_errors'
 gem 'binding_of_caller'
 gem 'test-unit'
