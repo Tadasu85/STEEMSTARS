@@ -1,0 +1,15 @@
+{
+  "name": "STEEMSTARS",
+  "scripts": {
+  },
+  "env": {
+  },
+  "formation": {
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+
+  ]
+}
