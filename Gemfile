@@ -4,7 +4,11 @@ require 'rubygems'
 gem 'better_errors'
 gem 'binding_of_caller'
 gem 'test-unit'
+<<<<<<< fd3ed96cc629ccd8c74933fe09138bd1d5b2bded
 ruby "2.3.0"
+=======
+require 'rubygems'
+>>>>>>> More db changes
 # gem 'byebug'
 
 gem 'radiator', github: 'inertia186/radiator'
@@ -20,7 +24,11 @@ gem 'jbuilder', '~> 2.5'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
+<<<<<<< fd3ed96cc629ccd8c74933fe09138bd1d5b2bded
 # gem 'node'
+=======
+gem 'node'
+>>>>>>> More db changes
 
 # Gems used only for assets and not required
 # in production environments by default.
