@@ -11,6 +11,3 @@
  = require_self
  = require_tree .
  */
-element.style {
-    background-image: url(/assets/background.jpg);
-}
