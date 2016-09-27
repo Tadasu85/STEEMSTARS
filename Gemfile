@@ -4,6 +4,7 @@ require 'rubygems'
 gem 'better_errors'
 gem 'binding_of_caller'
 gem 'test-unit'
+ruby "2.3.1"
 # gem 'byebug'
 
 gem 'radiator', github: 'inertia186/radiator'
