@@ -1,7 +1,8 @@
+<center>
 <h1>Account: <%= params[:account_id] %></h1>
 
 <p><%= pluralize(@followers.count, 'followers') %></p>
-
+</center>
 <ul>
   <% @followers.each do |follower| %>
     <li><%= link_to follower, account_followers_path(account_id: follower.gsub('.', ',')) %></li>
