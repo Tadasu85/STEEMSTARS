@@ -7,6 +7,11 @@
 </p>
 
 <p>
+  <strong>Network Reputation:</strong>
+  <%= @account.reputation %>
+</p>
+
+<p>
   <strong>Last Vote:</strong>
   <%= time_ago_in_words Time.parse(@account.last_vote_time) %>
 </p>
@@ -43,7 +48,12 @@
 
 <p>
   <strong>Global:</strong>
+  <%= api = Radiator::Api.new
+response = api.get_dynamic_global_properties
+response.result.virtual_supply %>
 </p>
 
 <%= link_to 'Followers', account_followers_path(params[:id]) %>
+<%= link_to 'Follows', account_follows_path(params[:id]) %>
+
 </center>

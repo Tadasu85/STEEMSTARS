@@ -18,3 +18,9 @@ All work herein is free open source I operate under the Collaborative Commons Li
 I need to also give much prop ups for alot of help so far to @inertia @https://github.com/inertia186
 
 as well as the fact that the backend runs on his Radiator API for Steem.
+
+c9 notes
+
+sudo service postgresql start
+
+rails s -b $IP -p $PORT

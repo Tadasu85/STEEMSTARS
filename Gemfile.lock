@@ -47,7 +47,7 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-    arel (7.1.2)
+    arel (7.1.4)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -66,6 +66,7 @@ GEM
     concurrent-ruby (1.0.2)
     debug_inspector (0.0.2)
     erubis (2.7.0)
+    eventmachine (1.2.0.1)
     execjs (2.7.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
@@ -95,11 +96,11 @@ GEM
     multi_json (1.12.1)
     net-http-persistent (2.9.4)
     nio4r (1.2.1)
-    nokogiri (1.6.8)
+    node (0.0.2)
+      eventmachine
+    nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
-      pkg-config (~> 1.1.7)
     pg (0.19.0)
-    pkg-config (1.1.7)
     power_assert (0.3.1)
     rack (2.0.1)
     rack-test (0.6.3)
@@ -166,10 +167,7 @@ DEPENDENCIES
   coffee-rails
   jbuilder (~> 2.5)
   jquery-rails
-<<<<<<< fd3ed96cc629ccd8c74933fe09138bd1d5b2bded
-=======
   node
->>>>>>> More db changes
   pg
   radiator!
   rails (>= 5.0.0.rc2, < 5.1)

@@ -8,7 +8,7 @@ class FollowsController < ApplicationController
     until count == @follows.size
       count = @follows.size
       response = api.get_following(@account_id, @follows.last, 'blog', 100)
-      @follows += response.result.map(&:follow)
+      @follows += response.result.map(&:following)
       @follows = @follows.uniq
     end
   end
