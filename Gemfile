@@ -8,6 +8,7 @@ ruby "2.3.0"
 # gem 'byebug'
 
 gem 'radiator', github: 'inertia186/radiator'
+gem "node-rails", git: "https://github.com/cloudspace/node-rails.git"
 gem 'rails', '>= 5.0.0.rc2', '< 5.1'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -21,6 +22,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'pg'
 gem 'node'
+gem 'devise'
+gem 'redis'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

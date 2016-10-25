@@ -1,4 +1,4 @@
-var cy = cytoscape({
+var cy = /*global cytoscape*/({
   container: document.getElementById('cy') // container to render in
 });
  elements: [ // list of graph elements to start with
@@ -11,6 +11,8 @@ var cy = cytoscape({
     { // edge ab
       data: { id: 'ab', source: 'a', target: 'b' }
     }
-  ]
+  ];
+  
+console.log("What?"); 
 
-console.log("TEST"); 
+document.getElementById("cy") == "Hello JavaScript!";

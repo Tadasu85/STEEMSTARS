@@ -24,3 +24,7 @@ c9 notes
 sudo service postgresql start
 
 rails s -b $IP -p $PORT
+
+redis-server
+
+workspace/node-rails (devel) $ node node-rails-server.js
