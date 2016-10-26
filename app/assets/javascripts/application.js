@@ -16,3 +16,5 @@
 //= require underscore
 //= require socket.io
 
+var cy = cytoscape({ /* options */ });
+
