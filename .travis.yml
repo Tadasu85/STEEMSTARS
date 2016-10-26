@@ -3,12 +3,7 @@ rvm:
  - 2.3
  - jruby
  - rbx-2
-<<<<<<< 3836a32e788cc04901a2b397c66a2693332e3f6b
 services:
-=======
- bundle install
- services:
->>>>>>> Hopefully defining trvs dependencies.
   - postgresql
 # uncomment and edit the following line if your project needs to run something other than `rake`:
 script: bundle exec rspec spec
