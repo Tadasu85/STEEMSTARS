@@ -11,4 +11,4 @@ services:
 >>>>>>> Hopefully defining trvs dependencies.
   - postgresql
 # uncomment and edit the following line if your project needs to run something other than `rake`:
- script: bundle exec rspec spec
+script: bundle exec rspec spec
