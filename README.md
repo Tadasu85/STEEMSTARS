@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Tadasu85/STEEMSTARS.svg?branch=master)](https://travis-ci.org/Tadasu85/STEEMSTARS)
+
 SteemStars is admitedly somewhat of an ambiscious project but nonetheless.
 
 To run simply git clone this repository and run bundle install
