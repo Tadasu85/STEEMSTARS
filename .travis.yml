@@ -3,5 +3,8 @@ rvm:
  - 2.3
  - jruby
  - rbx-2
+ bundle install
+ services:
+  - postgresql
 # uncomment and edit the following line if your project needs to run something other than `rake`:
 # script: bundle exec rspec spec
