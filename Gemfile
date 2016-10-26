@@ -7,6 +7,11 @@ gem 'test-unit'
 ruby "2.3.0"
 # gem 'byebug'
 
+group :test do
+  gem 'rake'
+end
+  
+
 gem 'radiator', github: 'inertia186/radiator'
 gem "node-rails", git: "https://github.com/cloudspace/node-rails.git"
 gem 'rails', '>= 5.0.0.rc2', '< 5.1'
