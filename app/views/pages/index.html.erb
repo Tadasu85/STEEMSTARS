@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!DOCTYPE>
+
+<html>
+
+  <head>
+    <title>SteemStars! Galaxy</title>
+
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+
+     <%= javascript_include_tag 'application' %>
+
+    <!-- for testing with local version of cytoscape.js -->
+    <!--<script src="../cytoscape.js/build/cytoscape.js"></script>-->
+
+    <style>
+      body {
+        font-family: helvetica, sans-serif;
+        font-size: 14px;
+      }
+      #cy {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 999;
+      }
+      h1 {
+        opacity: 0.5;
+        font-size: 1em;
+      }
+    </style>
+
+    <script>
+    yourUrl = "https://steemstars-tadasu85.c9users.io/accounts/raymonjohnstone/followers.json"
+      function Get(yourUrl){
+var Httpreq = new XMLHttpRequest(); // a new request
+Httpreq.open("GET",yourUrl,false);
+Httpreq.send(null);
+return Httpreq.responseText;          
+
+    }
+
+var json_obj = JSON.parse(Get(yourUrl));
+console.log("test"+json_obj);
+      document.addEventListener('DOMContentLoaded', function(){
+        var cy = window.cy = cytoscape({
+          container: document.getElementById('cy'),
+          boxSelectionEnabled: false,
+          autounselectify: true,
+          layout: {
+            name: 'grid',
+            cols: 6
+          },
+          style: [
+            {
+              selector: 'node',
+              style: {
+                'height': 40,
+                'width': 40,
+                'background-color': '#ccc',
+                'label': 'data(label)'
+              }
+               }
+           
+          ],
+          elements: [
+            { data: { label: 'testing' }, classes: 'background' }
+           
+          ]
+        });
+      });
+      
+    </script>
+  </head>
+
+  <body>
+      <center>
+    <h1>SteemStars! Galaxy</h1>
+      </center>
+    <div id="cy"></div>
+
+  </body>
+
+</html>

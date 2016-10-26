@@ -1,4 +1,11 @@
 class ApplicationController < ActionController::Base
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
+  end
   respond_to :js, :json
   protect_from_forgery with: :exception
   helper_method :api, :follow_api
@@ -10,3 +17,4 @@ class ApplicationController < ActionController::Base
     @@FOLLOW_API ||= Radiator::FollowApi.new
   end
 end
+

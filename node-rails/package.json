@@ -1,0 +1,10 @@
+{
+  "name" : "node-rails",
+  "description" : "providing sockets for ruby on rails",
+  "version" : "0.0.1",
+  "dependencies" : {
+    "socket.io" : "0.9.12",
+    "redis": "0.7.3",
+    "cookie": "0.1.0"
+  }
+}
