@@ -17,7 +17,8 @@
       body {
         font-family: helvetica, sans-serif;
         font-size: 14px;
-        background-image: "/public/assets/possiblebackground.png";
+        font color: "white";
+        background-image: url(<%= asset_path 'possiblebackground.png' %>)
         }
       #cy {
         position: absolute;
@@ -29,54 +30,78 @@
       }
       h1 {
         opacity: 0.5;
-        font-size: 1em;
+        font-size: 2em;
+        font color: #ccc;
       }
     </style>
 
     <script>
     
     
-        document.addEventListener('DOMContentLoaded', function(){
+    document.addEventListener('DOMContentLoaded', function(){
               var cy = window.cy = cytoscape({
               container: document.getElementById('cy'),
               boxSelectionEnabled: false,
               autounselectify: true,
-              autoungrabify: true,
+              autoungrabify: false,
              
-              
-              
               layout: {
                 name: 'grid',
-                cols: 6
-                    },
-                  style: [
+                      },
+               style: [
                     {
                 selector: 'node',
                 style: {
-                  'height': 40,
-                  'width': 40,
-                  'background-color': '#ccc',
-                  'label': 'data(label)'
-                    }
+                  'height': 20,
+                  'width': 20,
+                  'background-color': '#FEE003',
+                  'label': 'data(label)',
+                  'background-opacity': 100,
+                  'color': '#FFFFFF',
+                  'text-transform': 'uppercase',
+                  'font-weight': 'bold',
+                  'font-style': 'italic',
+                  'font-family': '"Times New Roman", Georgia, Serif',
+                  'text-shadow-blur': '100',
+                  'shadow-blur': '10',
+                  'background-opacity': 0.6
                  }
+                 },
+                 {
+                   selector:'edge',
+                   style: {
+                     'line-color': '#1247A9',
+                     'width': 1,
+                     'opacity': 0.4
+                   }
+                   
+                 }
+                 
                   ],
              elements: [
-               { data: { label: 'raymonjohnstone' }, classes: 'background' },
+               { data: {id: "parent", label: 'raymonjohnstone' }, classes: 'background' },
                
             ]
             
-        
               });
              
             });
-           
-        $.getJSON('accounts/raymonjohnstone/followers.json', function(followerS) {
-        
-        })
    
-    
-
-      
+        
+        $.getJSON('accounts/raymonjohnstone/followers.json', function(followerS) {
+           for (var prop in followerS) {
+           cy.add({group: "nodes", data: {id: prop, label: followerS[prop]}, position: {}});
+           cy.add({group: "edges", data: {source: prop, target: "parent"}})
+                                       }
+        cy.layout({ name: 'concentric', 
+        nodeRepulsion: function( node ){ return 800; }, 
+        gravity: 10, 
+        nodeOverlap: 5000, 
+        initialTemp: 400,
+        minnodespacing: 1,
+        padding: 0,
+        idealEdgeLength: function( edge ){ return 10; }});
+        });
     </script>
   </head>
 
