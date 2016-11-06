@@ -61,6 +61,8 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (7.1.4)
+    autoprefixer-rails (6.5.1.1)
+      execjs
     backbone-rails (1.2.3)
       rails (>= 3.0.0)
     bcrypt (3.1.11)
@@ -70,6 +72,9 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass (3.3.7)
+      autoprefixer-rails (>= 5.2.1)
+      sass (>= 3.3.4)
     builder (3.2.2)
     coderay (1.1.1)
     coffee-rails (4.2.1)
@@ -145,6 +150,7 @@ GEM
       nokogiri (~> 1.6.0)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails_layout (1.0.34)
     railties (5.0.0.1)
       actionpack (= 5.0.0.1)
       activesupport (= 5.0.0.1)
@@ -193,6 +199,7 @@ PLATFORMS
 DEPENDENCIES
   better_errors
   binding_of_caller
+  bootstrap-sass
   coffee-rails
   devise
   jbuilder (~> 2.5)
@@ -202,6 +209,7 @@ DEPENDENCIES
   pg
   radiator!
   rails (>= 5.0.0.rc2, < 5.1)
+  rails_layout
   rake
   redis
   responders (~> 2.2.0)

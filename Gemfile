@@ -10,6 +10,10 @@ ruby "2.3.0"
 group :test do
   gem 'rake'
 end
+
+group :development do
+  gem 'rails_layout'
+end
   
 
 gem 'radiator', github: 'inertia186/radiator'
@@ -29,6 +33,7 @@ gem 'pg'
 gem 'node'
 gem 'devise'
 gem 'redis'
+gem 'bootstrap-sass'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
