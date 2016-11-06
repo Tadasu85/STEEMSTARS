@@ -8,6 +8,25 @@ main {
   padding-right: 10px;
   width: 100%;
   }
+body {
+  font-family: helvetica, sans-serif;
+  font-size: 14px;
+  color: #fff;
+  background-image: url('possiblebackground.png');
+  }
+#cy {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  }
+h1 {
+  opacity: 0.5;
+  font-size: 10em;
+  color: #ffffff;
+  }
 header {
   border: 1px solid #d4d4d4;
   background-image: linear-gradient(to bottom, white, #f2f2f2);
