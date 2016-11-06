@@ -14,6 +14,7 @@ gem 'redis'
 gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem "rspec"
+gem 'rake'
 gem 'radiator', github: 'inertia186/radiator'
 gem "node-rails", git: "https://github.com/cloudspace/node-rails.git"
 group :assets do
