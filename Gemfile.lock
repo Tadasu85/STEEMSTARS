@@ -1,13 +1,4 @@
 GIT
-  remote: git://github.com/inertia186/radiator.git
-  revision: 9950663cad6544bbea96bdd562f73230757b67b3
-  specs:
-    radiator (0.0.4)
-      hashie (>= 1.1)
-      logging (~> 2.1.0)
-      net-http-persistent (= 2.9.4)
-
-GIT
   remote: https://github.com/cloudspace/node-rails.git
   revision: 8f16492bb17204cfe567ac0360ef3f944df95047
   specs:
@@ -19,6 +10,15 @@ GIT
       redis
       socket.io-rails (>= 0.9.16)
       underscore-rails
+
+GIT
+  remote: https://github.com/inertia186/radiator.git
+  revision: 9950663cad6544bbea96bdd562f73230757b67b3
+  specs:
+    radiator (0.0.4)
+      hashie (>= 1.1)
+      logging (~> 2.1.0)
+      net-http-persistent (= 2.9.4)
 
 GEM
   remote: https://rubygems.org/
