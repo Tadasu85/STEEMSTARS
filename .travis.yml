@@ -1,9 +1,14 @@
+sudo: true
+cache:
+ bundler: true
 language: ruby
 rvm:
- - 2.3
- - jruby
- - rbx-2
+ - 2.3.0
 services:
   - postgresql
-# uncomment and edit the following line if your project needs to run something other than `rake`:
- script: bundle exec rspec spec
+env:
+- DB=postgres
+before_script:
+  - cp config/database.yml.travis config/database.yml
+  - psql -c 'create database my_database_test;' -U postgres
+script: TESTOPTS="--verbose" bundle exec rake test

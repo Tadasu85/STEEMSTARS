@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
+  root to: 'accounts#index'
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'accounts#index'
   resources :accounts, only: [:show, :index] do
     collection do
       get :find
@@ -10,5 +10,6 @@ Rails.application.routes.draw do
     resources :follows, only: :index
   end
   match ':controller(/:action(/:id))', :via => :get
+  
     
 end
