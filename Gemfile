@@ -17,6 +17,7 @@ gem "rspec"
 gem 'radiator', git: 'https://github.com/inertia186/radiator.git'
 gem "node-rails", git: "https://github.com/cloudspace/node-rails.git"
 gem "rspec-rails", :group => [:development, :test]
+gem 'rails-controller-testing'
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
