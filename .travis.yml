@@ -2,4 +2,4 @@ language: ruby
 sudo: required
 rvm:
    - "2.3.0"
-script: TESTOPTS="--verbose" bundle exec rake test
+script: TESTOPTS="--verbose"
