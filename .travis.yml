@@ -1,5 +1,15 @@
 language: ruby
 sudo: required
+addons:
+  postgresql: "9.3.14"
+  code_climate:
+  repo_token:
+services:
+  - postgresql
+
 rvm:
    - "2.3.0"
-script: TESTOPTS="--verbose" rspec spec
+before_script:
+  - cp config/database.yml.travis config/database.yml
+  - psql -c 'create database my_database_test;' -U postgres
+script: TESTOPTS=rspec spec
