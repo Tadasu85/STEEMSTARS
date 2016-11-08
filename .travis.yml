@@ -10,6 +10,6 @@ services:
 rvm:
    - "2.3.0"
 before_script:
-  - cp config/database.yml.travis config/database.yml
+  - cp config/database.yml
   - psql -c 'create database my_database_test;' -U postgres
-script: TESTOPTS=rspec spec
+script: TESTOPTS=
