@@ -14,3 +14,5 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+/config/environments/$RAILS_ENV.rb
+/config/initializers/devise.rb

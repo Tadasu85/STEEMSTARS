@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/secret', to: 'pages#secret', as: :secret
   resources :widgets
   root to: 'accounts#index'
   devise_for :users

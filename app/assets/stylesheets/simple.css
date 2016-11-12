@@ -11,8 +11,8 @@ main {
 body {
   font-family: helvetica, sans-serif;
   font-size: 14px;
-  color: #fff;
-  background-image: url('possiblebackground.png');
+  color: #FFFFFF !important;
+
   }
 #cy {
   position: absolute;
@@ -25,7 +25,7 @@ body {
 h1 {
   opacity: 0.5;
   font-size: 10em;
-  color: #ffffff;
+  color: #FFFFFF;
   }
 header {
   border: 1px solid #d4d4d4;

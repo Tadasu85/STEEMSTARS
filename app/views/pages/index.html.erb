@@ -1,29 +1,11 @@
-<!DOCTYPE html>
-<!DOCTYPE>
-
-<html>
-
-  <head>
-    <title>SteemStars! Galaxy</title>
-
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
-
-     <%= javascript_include_tag 'application' %>
-
-    <!-- for testing with local version of cytoscape.js -->
-    <!--<script src="../cytoscape.js/build/cytoscape.js"></script>-->
-
-    <script>
-
-    </script>
-  </head>
-
-  <body>
-      <center>
-    <h1>SteemStars! Galaxy</h1>
-      </center>
-    <div id="cy"></div>
-
-  </body>
-
-</html>
+<% content_for :top_content do %>
+  <div class="jumbotron">
+    <div class="container">
+      <h1>Welcome!</h1>
+      <p>Register to get started.</p>
+      <p>
+        <%= link_to 'Register', new_user_registration_path, class: 'btn btn-primary btn-lg' %>
+      </p>
+    </div>
+  </div>
+<% end %>
