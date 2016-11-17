@@ -1,3 +1,4 @@
+<center>
 <h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -7,11 +8,6 @@
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
-  <div class="field">
-    <%= f.label :account %><br />
-    <%= f.account :account, autofocus: false %>
-  </div>
-
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
@@ -29,5 +25,6 @@
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
+</center>
 
 <%= render "users/shared/links" %>

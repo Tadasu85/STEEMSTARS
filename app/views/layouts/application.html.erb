@@ -7,7 +7,13 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
     <%= csrf_meta_tags %>
-  </head>
+    <!-- required: realtime support framework -->
+    <%= realtime_support %>
+    <!-- optional: message_handler dequeues realtime messages into Backbone.js style events -->
+    <%= realtime_message_handler %>
+    <!-- optional: message_console_logger listens or dequeues realtime messages to the browser console -->
+    <%= realtime_message_console_logger %>
+    </head>
   <body>
     <header>
       <nav class="navbar navbar-inverse">
@@ -18,7 +24,7 @@
     <ul class="nav navbar-nav">
   <li><%= link_to 'Home', root_path %></li>
   <% if user_signed_in? %>
-    <li><%= link_to 'Secret', secret_path %></li>
+    <li><%= link_to 'Galaxy', secret_path %></li>
   <% end %>
 </ul>
       <ul class="nav navbar-nav pull-right">

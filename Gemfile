@@ -3,7 +3,6 @@ require 'rubygems'
 ruby "2.3.0"
 gem 'better_errors'
 gem 'binding_of_caller'
-gem 'test-unit'
 gem 'rails', '>= 5.0.0.rc2', '< 5.1'
 gem 'responders', '~> 2.2.0'
 gem 'jbuilder', '~> 2.5'
@@ -15,19 +14,20 @@ gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem "rspec"
 gem 'radiator', git: 'https://github.com/inertia186/radiator.git'
-gem "node-rails", git: "https://github.com/cloudspace/node-rails.git"
+gem 'realtime'
 gem "rspec-rails", :group => [:development, :test]
-gem 'rails-controller-testing'
-gem 'jquery-turbolinks'
 gem 'turbolinks'
+gem 'jquery-turbolinks'
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
   gem 'uglifier', '>= 1.0.3'
-end
+  end
 group :development do
   gem 'rails_layout'
 end
 group :test do
   gem 'rake'
+  gem 'test-unit'
+  gem 'rails-controller-testing'
 end

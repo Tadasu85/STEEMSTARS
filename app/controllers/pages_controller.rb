@@ -1,5 +1,8 @@
 class PagesController < ApplicationController 
+    before_action :authenticate_user!, only: [:secret]
+    layout 'application', :except => [:secret]
     def index
-        before_action :authenticate_user!, only: [:secret]
+    end
+    def secret
     end
 end

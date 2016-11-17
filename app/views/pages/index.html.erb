@@ -1,11 +1,14 @@
 <% content_for :top_content do %>
-  <div class="jumbotron">
-    <div class="container">
+<center>
+  <%= image_tag("banner.png", :alt => "banner image by @renzoarg") %>
+ <br>
+ Image by @renzoarg
+  <div class="Welcome">
       <h1>Welcome!</h1>
-      <p>Register to get started.</p>
+      Register to get started.
       <p>
         <%= link_to 'Register', new_user_registration_path, class: 'btn btn-primary btn-lg' %>
       </p>
     </div>
-  </div>
+</center>
 <% end %>
