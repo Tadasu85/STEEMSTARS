@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  root to: 'accounts#index'
+  root to: 'pages#index'
+  get '/secret', to: 'pages#secret', as: :secret
+  resources :widgets
+  
   devise_for :users
+  devise_for :admins
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :accounts, only: [:show, :index] do
     collection do
@@ -11,5 +15,7 @@ Rails.application.routes.draw do
   end
   match ':controller(/:action(/:id))', :via => :get
   
+  resources :pages do
+  end
     
 end

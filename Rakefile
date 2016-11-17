@@ -6,7 +6,7 @@ require File.expand_path('../config/application', __FILE__)
 
 STEEMSTARS::Application.load_tasks
 
-require "bundler/gem_tasks"
+require 'bundler/gem_helper'
 require 'rspec/core/rake_task'
 
 RSpec::Core::RakeTask.new

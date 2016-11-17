@@ -1,14 +1,14 @@
-sudo: true
-cache:
- bundler: true
 language: ruby
-rvm:
- - 2.3.0
+sudo: required
+addons:
+  postgresql: "9.3.14"
+  code_climate:
+  repo_token:
 services:
   - postgresql
-env:
-- DB=postgres
+
+rvm:
+   - "2.3.0"
 before_script:
-  - cp config/database.yml.travis config/database.yml
-  - psql -c 'create database my_database_test;' -U postgres
-script: TESTOPTS="--verbose" bundle exec rake test
+  - psql -c 'create database my_database_test;'
+script: TESTOPTS=

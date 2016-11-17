@@ -1,4 +1,6 @@
 class FollowsController < ApplicationController
+  before_action :authenticate_admin!
+  before_action :authenticate_user!, only: [:secret]
   def index
     @account_id = params[:account_id].to_s.gsub(',', '.')
     @follows = []
