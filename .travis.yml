@@ -10,5 +10,5 @@ services:
 rvm:
    - "2.3.0"
 before_script:
-  - psql -c 'create database my_database_test;'
+  #- psql -c 'create database my_database_test;'
 script: TESTOPTS=

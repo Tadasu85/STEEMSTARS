@@ -1,5 +1,5 @@
 class AccountsController < ApplicationController
-  before_action :authenticate_admin!
+  #before_action :authenticate_admin!
   before_action :authenticate_user!, only: [:secret]
     def index
     end
