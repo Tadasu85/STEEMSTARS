@@ -12,7 +12,6 @@ gem 'devise'
 gem 'redis'
 gem 'bootstrap-sass'
 gem 'jquery-rails'
-gem "rspec"
 gem 'radiator', git: 'https://github.com/inertia186/radiator.git'
 gem 'realtime'
 gem "rspec-rails", :group => [:development, :test]
@@ -29,6 +28,7 @@ group :development do
   gem 'rails_layout'
 end
 group :test do
+  gem "rspec"
   gem 'rake'
   gem 'test-unit'
   gem 'rails-controller-testing'
