@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-   - "2.3.0"
+   - "1.27"
 sudo: required
 cache: bundler
 addons:
@@ -10,6 +10,7 @@ services:
   - postgresql
   - redis
 before_script:
+  - gem update --system
   - RAILS_ENV=test
   - psql -c 'create database my_database_test;' -U postgres
   - bundle exec rake db:setup
