@@ -1,5 +1,8 @@
 language: ruby
+rvm:
+   - "2.3.0"
 sudo: required
+cache: bundler
 addons:
   postgresql: "9.3.14"
   code_climate:
@@ -7,12 +10,8 @@ addons:
 services:
   - postgresql
   - redis
-
-rvm:
-   - "2.3.0"
 before_script:
-  #- psql -c 'create database my_database_test;'
-script: TESTOPTS= bundle exec rspec
-# regular test configuration
+  - bundle exec rake db:setup
+  - bundle exec rspec spec/models/user_spec.rb
 after_success:
   - bundle exec codeclimate-test-reporter
