@@ -34,6 +34,8 @@ body {
 }
 body{
  background-image: url('background.png');
+ background-repeat: no-repeat;
+ background-size: cover;
 }
 main {
   
@@ -44,7 +46,8 @@ main {
   width: 100%;
   }
 #cy {
-  position: absolute;
+  position: relative;
+  height: 720px;
   left: 0;
   top: 0;
   right: 0;
