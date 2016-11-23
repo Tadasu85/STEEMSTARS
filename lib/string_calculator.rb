@@ -1,0 +1,2 @@
+class StringCalculator
+end

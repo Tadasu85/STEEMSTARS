@@ -32,4 +32,6 @@ group :test do
   gem 'rake'
   gem 'test-unit'
   gem 'rails-controller-testing'
+  gem "simplecov"
+  gem "codeclimate-test-reporter", "~> 1.0.0"
 end

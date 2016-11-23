@@ -12,3 +12,6 @@ rvm:
 before_script:
   #- psql -c 'create database my_database_test;'
 script: TESTOPTS=
+# regular test configuration
+after_success:
+  - bundle exec codeclimate-test-reporter
