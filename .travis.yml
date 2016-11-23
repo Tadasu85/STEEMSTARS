@@ -11,7 +11,8 @@ services:
   - postgresql
   - redis
 before_script:
+  - RAILS_ENV=test
   - bundle exec rake db:setup
-  - bundle exec rspec spec/models/user_spec.rb
+  - bundle exec rspec spec/rails_helper.rb
 after_success:
   - bundle exec codeclimate-test-reporter
