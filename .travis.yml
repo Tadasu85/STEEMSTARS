@@ -12,7 +12,6 @@ services:
 before_script:
   - RAILS_ENV=test
   - psql -c 'create database my_database_test;' -U postgres
-  - rake
   - bundle exec rake db:setup
   - bundle exec rspec spec/rails_helper.rb
 after_success:
