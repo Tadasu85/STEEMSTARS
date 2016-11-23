@@ -6,12 +6,13 @@ addons:
   repo_token: f51d853f26b3ae635f96bb8cb9b439e7137a27fc0b8ea005aa046c17054a9d85
 services:
   - postgresql
+  - redis
 
 rvm:
    - "2.3.0"
 before_script:
   #- psql -c 'create database my_database_test;'
-script: TESTOPTS=
+script: TESTOPTS= bundle exec rspec
 # regular test configuration
 after_success:
   - bundle exec codeclimate-test-reporter
