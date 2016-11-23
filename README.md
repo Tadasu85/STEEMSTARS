@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/Tadasu85/STEEMSTARS.svg?branch=master)](https://travis-ci.org/Tadasu85/STEEMSTARS)
-
+[![Code Climate](https://codeclimate.com/github/Tadasu85/STEEMSTARS/badges/gpa.svg)](https://codeclimate.com/github/Tadasu85/STEEMSTARS)
+[![Test Coverage](https://codeclimate.com/github/Tadasu85/STEEMSTARS/badges/coverage.svg)](https://codeclimate.com/github/Tadasu85/STEEMSTARS/coverage)
+[![Issue Count](https://codeclimate.com/github/Tadasu85/STEEMSTARS/badges/issue_count.svg)](https://codeclimate.com/github/Tadasu85/STEEMSTARS)
 SteemStars is admitedly somewhat of an ambitious project but nonetheless.
 
 To run simply git clone this repository and run bundle install
