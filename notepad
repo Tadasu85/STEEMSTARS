@@ -1,3 +1,22 @@
+c9 notes
+
+sudo service postgresql start
+
+rails s -b $IP -p $PORT
+
+sudo service redis-server start
+
+redis-cli
+
+workspace/node-rails (devel) $ node node-rails-server.js
+
+foreman start
+
+cd realtime-server
+
+
+Cytoscape Notes
+
 
     /*global $*/
     /*global cytoscape*/
@@ -109,4 +128,3 @@
            console.log('followerS')
           //                                      }
 //);
-
