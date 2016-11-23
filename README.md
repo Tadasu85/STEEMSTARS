@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/Tadasu85/STEEMSTARS.svg?branch=master)](https://travis-ci.org/Tadasu85/STEEMSTARS)
 
-SteemStars is admitedly somewhat of an ambiscious project but nonetheless.
+SteemStars is admitedly somewhat of an ambitious project but nonetheless.
 
 To run simply git clone this repository and run bundle install
 
@@ -27,6 +27,8 @@ sudo service postgresql start
 
 rails s -b $IP -p $PORT
 
-redis-server
+sudo service redis-server start
+
+redis-cli
 
 workspace/node-rails (devel) $ node node-rails-server.js
