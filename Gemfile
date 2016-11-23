@@ -6,7 +6,7 @@ gem 'binding_of_caller', :group => [:developement, :test]
 gem 'rails', '>= 5.0.0.rc2', '< 5.1'
 gem 'responders', '~> 2.2.0'
 gem 'jbuilder', '~> 2.5'
-gem 'pg'
+gem 'pg', :group => [:development, :test]
 gem 'node'
 gem 'devise'
 gem 'redis'

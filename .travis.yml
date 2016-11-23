@@ -4,7 +4,7 @@ rvm:
 sudo: required
 cache: bundler
 addons:
-  postgresql: "9.3.14"
+  postgresql: "9"
   code_climate:
   repo_token: f51d853f26b3ae635f96bb8cb9b439e7137a27fc0b8ea005aa046c17054a9d85
 services:
@@ -12,6 +12,8 @@ services:
   - redis
 before_script:
   - RAILS_ENV=test
+  - psql -c 'create database my_database_test;' -U postgres
+  - rake
   - bundle exec rake db:setup
   - bundle exec rspec spec/rails_helper.rb
 after_success:
