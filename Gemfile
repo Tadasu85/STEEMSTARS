@@ -7,7 +7,6 @@ group :production do
   gem 'responders', '~> 2.2.0'
   gem 'jbuilder', '~> 2.5'
   gem 'node'
-  gem 'devise'
   gem 'redis'
   gem 'bootstrap-sass'
   gem 'jquery-rails'
@@ -18,6 +17,7 @@ group :production do
   gem 'pg'
   end
   
+gem 'devise'  
 gem 'better_errors'
 gem 'binding_of_caller'
 gem "rspec-rails", :group => [:development, :test]
