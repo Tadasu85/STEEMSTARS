@@ -1,23 +1,27 @@
 source 'https://rubygems.org'
 require 'rubygems'
 ruby "2.3.0"
-gem 'better_errors', :group => [:developement, :test]
-gem 'binding_of_caller', :group => [:developement, :test]
-gem 'rails', '>= 5.0.0.rc2', '< 5.1'
-gem 'responders', '~> 2.2.0'
-gem 'jbuilder', '~> 2.5'
-gem 'pg', :group => [:development, :test]
-gem 'node'
-gem 'devise'
-gem 'redis'
-gem 'bootstrap-sass'
-gem 'jquery-rails'
-gem 'radiator', git: 'https://github.com/inertia186/radiator.git'
-gem 'realtime'
+group :production do
+  gem 'radiator', git: 'https://github.com/inertia186/radiator.git'
+  gem 'rails', '>= 5.0.0.rc2', '< 5.1'
+  gem 'responders', '~> 2.2.0'
+  gem 'jbuilder', '~> 2.5'
+  gem 'node'
+  gem 'devise'
+  gem 'redis'
+  gem 'bootstrap-sass'
+  gem 'jquery-rails'
+  gem 'realtime'
+  gem 'turbolinks'
+  gem 'jquery-turbolinks'
+  gem 'thin'
+  gem 'pg'
+  end
+  
+gem 'better_errors'
+gem 'binding_of_caller'
 gem "rspec-rails", :group => [:development, :test]
-gem 'turbolinks'
-gem 'jquery-turbolinks'
-gem 'thin'
+
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'

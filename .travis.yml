@@ -11,6 +11,7 @@ services:
   - redis
 before_script:
   - gem update --system
+  - bundle install --without production
   - RAILS_ENV=test
   - psql -c 'create database my_database_test;' -U postgres
   - bundle exec rake db:setup
