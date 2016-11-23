@@ -3,7 +3,6 @@ require 'rubygems'
 ruby "2.3.0"
 group :production do
   gem 'radiator', git: 'https://github.com/inertia186/radiator.git'
-  gem 'rails', '>= 5.0.0.rc2', '< 5.1'
   gem 'responders', '~> 2.2.0'
   gem 'jbuilder', '~> 2.5'
   gem 'node'
@@ -17,10 +16,12 @@ group :production do
   gem 'pg'
   end
   
+gem 'rails', '>= 5.0.0.rc2', '< 5.1'
 gem 'devise'  
 gem 'better_errors'
 gem 'binding_of_caller'
 gem "rspec-rails", :group => [:development, :test]
+gem 'activemodel'
 
 group :assets do
   gem 'sass-rails'
