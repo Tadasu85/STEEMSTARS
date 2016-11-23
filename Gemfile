@@ -13,7 +13,6 @@ group :production do
   gem 'turbolinks'
   gem 'jquery-turbolinks'
   gem 'thin'
-  gem 'pg'
   end
   
 gem 'rails', '>= 5.0.0.rc2', '< 5.1'
@@ -21,7 +20,7 @@ gem 'devise'
 gem 'better_errors'
 gem 'binding_of_caller'
 gem "rspec-rails", :group => [:development, :test]
-
+gem 'pg'
 
 group :assets do
   gem 'sass-rails'
