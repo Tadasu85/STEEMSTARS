@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-   - "1.27"
+   - "2.3.0"
 sudo: required
 cache: bundler
 addons:
