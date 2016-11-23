@@ -18,6 +18,7 @@ gem 'realtime'
 gem "rspec-rails", :group => [:development, :test]
 gem 'turbolinks'
 gem 'jquery-turbolinks'
+gem 'thin'
 
 group :assets do
   gem 'sass-rails'
@@ -26,7 +27,6 @@ group :assets do
   end
 group :development do
   gem 'rails_layout'
-  gem 'web-console'
 end
 group :test do
   gem 'rake'
