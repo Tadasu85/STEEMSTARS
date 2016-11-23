@@ -3,7 +3,7 @@ sudo: required
 addons:
   postgresql: "9.3.14"
   code_climate:
-  repo_token:
+  repo_token:f51d853f26b3ae635f96bb8cb9b439e7137a27fc0b8ea005aa046c17054a9d85
 services:
   - postgresql
 
