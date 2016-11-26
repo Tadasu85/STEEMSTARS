@@ -1,10 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception # leave this at the top
-
+  before_action :configure_permitted_parameters, if: :devise_controller?
   realtime_controller({:queue => :redis})
   respond_to :html, :json, :js
-
-  before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected
 

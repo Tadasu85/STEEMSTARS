@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 require 'rubygems'
 ruby "2.3.0"
-group :production do
   gem 'radiator', git: 'https://github.com/inertia186/radiator.git'
   gem 'responders', '~> 2.2.0'
   gem 'jbuilder', '~> 2.5'
@@ -13,7 +12,6 @@ group :production do
   gem 'turbolinks'
   gem 'jquery-turbolinks'
   gem 'thin'
-  end
   
 gem 'rails', '>= 5.0.0.rc2', '< 5.1'
 gem 'devise'  
