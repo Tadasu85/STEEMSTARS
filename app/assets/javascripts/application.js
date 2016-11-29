@@ -29,7 +29,7 @@ var cy = window.cy = cytoscape({
     boxSelectionEnabled: true,
     autounselectify: true,
     autoungrabify: false,
-    zoom: 50,
+    zoom: 1,
     layout: {
         name: 'cose',
             // Called on `layoutready`
@@ -53,16 +53,16 @@ var cy = window.cy = cytoscape({
             // Randomize the initial positions of the nodes (true) or use existing positions (false)
             randomize: true,
             // Extra spacing between components in non-compound graphs
-            componentSpacing: 1000,
+            componentSpacing: 30,
             // Node repulsion (non overlapping) multiplier
             nodeRepulsion: function(node) {
                 return 400000;
             },
             // Node repulsion (overlapping) multiplier
-            nodeOverlap: 999,
+            nodeOverlap: 10,
             // Ideal edge (non nested) length
             idealEdgeLength: function(edge) {
-                return 50;
+                return 10;
             },
             // Divisor to compute edge forces
             edgeElasticity: function(edge) {
@@ -71,11 +71,11 @@ var cy = window.cy = cytoscape({
             // Nesting factor (multiplier) to compute ideal edge length for nested edges
             nestingFactor: 5,
             // Gravity force (constant)
-            gravity: 100,
+            gravity: 80,
             // Maximum number of iterations to perform
             numIter: 1000,
             // Initial temperature (maximum node displacement)
-            initialTemp: 500,
+            initialTemp: 200,
             // Cooling factor (how the temperature is reduced between consecutive iterations
             coolingFactor: 0.95,
             // Lower temperature threshold (below this point the layout will end)
@@ -116,23 +116,19 @@ var cy = window.cy = cytoscape({
             classes: 'background'
               }]
 });
-//getJSON('/accounts/raymonjohnstone/followers.json', function(followerS) {
-           //for (var i = 0; 1 < followerS[prop].length; i++) {
-               /*global cy*/
-           //cy.add({group: "nodes", data: {id: prop, label: followerS[prop]}, position: {}});
-           //cy.add({group: "edges", data: {source: prop, target: "parent"}});
-           //cy.layout({name:"cose"});
-//var UserObject = $.getJSON('/current_user.responseText')
-//console.log(UserObject)
-//;UserObject.responseText.split(string|RegExp)
-//console.log(steemaccount)
-          //                                      }
 
-    $.getJSON('/accounts/' + steemaccount + '/followers.json', function(followerS) {
+$.getJSON('/accounts/' + steemaccount + '/followers.json', function(followerS) {
            for (var prop in followerS) {
                /*global cy*/
-           cy.add({group: "nodes", data: {id: prop, label: followerS[prop]}, position: {}});
-           cy.add({group: "edges", data: {source: prop, target: "parent"}});
+           cy.add({group: "nodes", data: {id: 'frs' + prop, label: followerS[prop]}, position: {}});
+           cy.add({group: "edges", data: {source: 'frs' + prop, target: "parent"}});
+                                       }
+});
+$.getJSON('/accounts/' + steemaccount + '/follows.json', function(followS) {
+           for (var prop in followS) {
+               /*global cy*/
+           cy.add({group: "nodes", data: {id: 'fs' + prop, label: followS[prop]}, position: {}});
+           cy.add({group: "edges", data: {source: 'fs' + prop, target: "parent"}});
                                        }
                                        cy.layout({name:"cose"});
 });
