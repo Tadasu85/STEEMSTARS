@@ -91,7 +91,7 @@ var cy = window.cy = cytoscape({
                 'background-color': '#FEE003',
                 'label': 'data(label)',
                 'color': '#FFFFFF',
-                'text-transform': 'uppercase',
+                'text-transform': 'lowercase',
                 'font-weight': 'bold',
                 'font-style': 'italic',
                 'font-family': '"Times New Roman", Georgia, Serif',
