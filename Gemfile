@@ -12,7 +12,6 @@ gem 'realtime'
 gem 'jquery-turbolinks'
 gem 'thin'
 gem 'figaro'
-  
 gem 'rails', '>= 5.0.0.rc2', '< 5.1'
 gem 'devise'  
 gem 'better_errors'
@@ -25,7 +24,7 @@ group :assets do
   gem 'coffee-rails'
   gem 'uglifier', '>= 1.0.3'
   gem 'turbolinks'
-  end
+end
 group :development do
   gem 'rails_layout'
 end
