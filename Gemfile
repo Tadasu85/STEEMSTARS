@@ -8,10 +8,10 @@ gem 'node'
 gem 'redis'
 gem 'bootstrap-sass'
 gem 'jquery-rails'
-  gem 'realtime'
-  gem 'turbolinks'
-  gem 'jquery-turbolinks'
-  gem 'thin'
+gem 'realtime'
+gem 'turbolinks'
+gem 'jquery-turbolinks'
+gem 'thin'
 gem 'figaro'
   
 gem 'rails', '>= 5.0.0.rc2', '< 5.1'
@@ -32,7 +32,6 @@ end
 group :test do
   gem "rspec"
   gem 'rake'
-  gem 'test-unit'
   gem 'rails-controller-testing'
   gem "simplecov"
   gem "codeclimate-test-reporter", "~> 1.0.0"
