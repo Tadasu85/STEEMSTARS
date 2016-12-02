@@ -9,7 +9,6 @@ gem 'redis'
 gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem 'realtime'
-gem 'turbolinks'
 gem 'jquery-turbolinks'
 gem 'thin'
 gem 'figaro'
@@ -25,6 +24,7 @@ group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
   gem 'uglifier', '>= 1.0.3'
+  gem 'turbolinks'
   end
 group :development do
   gem 'rails_layout'
