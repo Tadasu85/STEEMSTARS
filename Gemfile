@@ -18,7 +18,7 @@ gem 'devise'
 gem 'better_errors'
 gem 'binding_of_caller'
 gem "rspec-rails", :group => [:development, :test]
-gem 'pg'
+gem 'pg' , :group => [:development, :test]
 
 group :assets do
   gem 'sass-rails'
