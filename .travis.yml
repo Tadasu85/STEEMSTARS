@@ -8,6 +8,7 @@ services:
   - postgresql
   - redis
 before_script:
+  - bundle exec rake --verbose --trace
   - bundle install --without production
   - RAILS_ENV=test
   - psql -c 'create database my_database_test;' -U postgres
