@@ -5,7 +5,7 @@ sudo: required
 cache: bundler
 addons:
   code_climate:
-  repo_token: f51d853f26b3ae635f96bb8cb9b439e7137a27fc0b8ea005aa046c17054a9d85
+  repo_token: 8ce8151bd5f6bdd2683227fb31ecb539ecd3271a6d608ee6d2d5b035141c475d
 services:
   - postgresql
   - redis
