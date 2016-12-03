@@ -8,31 +8,30 @@ gem 'node'
 gem 'redis'
 gem 'bootstrap-sass'
 gem 'jquery-rails'
-  gem 'realtime'
-  gem 'turbolinks'
-  gem 'jquery-turbolinks'
-  gem 'thin'
+gem 'realtime'
+gem 'jquery-turbolinks'
+gem 'thin'
 gem 'figaro'
-  
 gem 'rails', '>= 5.0.0.rc2', '< 5.1'
 gem 'devise'  
 gem 'better_errors'
 gem 'binding_of_caller'
 gem "rspec-rails", :group => [:development, :test]
-gem 'pg'
+gem 'pg' , :group => [:development, :test]
 
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
   gem 'uglifier', '>= 1.0.3'
-  end
+  gem 'turbolinks'
+end
 group :development do
   gem 'rails_layout'
 end
 group :test do
+ 
   gem "rspec"
   gem 'rake'
-  gem 'test-unit'
   gem 'rails-controller-testing'
   gem "simplecov"
   gem "codeclimate-test-reporter", "~> 1.0.0"

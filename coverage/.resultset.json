@@ -618,10 +618,8 @@
       "/home/ubuntu/workspace/app/controllers/application_controller.rb": [
         1,
         1,
-        null,
         1,
         1,
-        null,
         1,
         null,
         1,
@@ -636,7 +634,7 @@
         null,
         null,
         1,
-        6,
+        3,
         null,
         1,
         1,
@@ -1122,6 +1120,6 @@
         null
       ]
     },
-    "timestamp": 1479926581
+    "timestamp": 1480729363
   }
 }
