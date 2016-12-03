@@ -8,7 +8,7 @@ script:
   - bundle exec rake db:test:prepare
   - bundle exec rspec spec/
 before_script:
-  - psql -e 'create database my_database_test'
+  - psql -c 'create database my_database_test'
 bundler_args: --binstubs=./bundler_stubs
 
 after_success:
