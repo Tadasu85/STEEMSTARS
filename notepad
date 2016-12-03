@@ -1,10 +1,10 @@
 c9 notes
 
 sudo service postgresql start
-
+sudo service redis-server start
 rails s -b $IP -p $PORT
 
-sudo service redis-server start
+
 
 redis-cli
 

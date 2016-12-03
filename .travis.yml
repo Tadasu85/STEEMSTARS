@@ -8,10 +8,13 @@ env:
 script: 
   - RAILS_ENV=test bundle exec rake db:migrate --trace
   - bundle exec rake db:test:prepare
-  - bundle exec rspec spec/
+  - bundle exec rspec spec
 before_script:
   - psql -c 'create database my_database_test;' -U postgres
 bundler_args: --binstubs=./bundler_stubs
 
 after_success:
   - bundle exec codeclimate-test-reporter
+addons:
+  code_climate:
+    repo_token: 8ce8151bd5f6bdd2683227fb31ecb539ecd3271a6d608ee6d2d5b035141c475d
