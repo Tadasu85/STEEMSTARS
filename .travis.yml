@@ -3,6 +3,7 @@ rvm:
   - "2.3.0"
 services:
   - postgresql
+  - redis
 env:
   - DB=psql
 script: 
