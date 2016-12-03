@@ -1,7 +1,7 @@
-[![Build Status](https://travis-ci.org/Tadasu85/STEEMSTARS.svg?branch=master)](https://travis-ci.org/Tadasu85/STEEMSTARS)
-[![Code Climate](https://codeclimate.com/github/Tadasu85/STEEMSTARS/badges/gpa.svg)](https://codeclimate.com/github/Tadasu85/STEEMSTARS)
-[![Test Coverage](https://codeclimate.com/github/Tadasu85/STEEMSTARS/badges/coverage.svg)](https://codeclimate.com/github/Tadasu85/STEEMSTARS/coverage)
-[![Issue Count](https://codeclimate.com/github/Tadasu85/STEEMSTARS/badges/issue_count.svg)](https://codeclimate.com/github/Tadasu85/STEEMSTARS)
+[![Build Status](https://travis-ci.org/steem-third-party/STEEMSTARS.svg?branch=master)](https://travis-ci.org/steem-third-party/STEEMSTARS)
+[![Code Climate](https://codeclimate.com/github/steem-third-party/STEEMSTARS/badges/gpa.svg)](https://codeclimate.com/github/steem-third-party/STEEMSTARS)
+[![Test Coverage](https://codeclimate.com/github/steem-third-party/STEEMSTARS/badges/coverage.svg)](https://codeclimate.com/github/steem-third-party/STEEMSTARS/coverage)
+[![Issue Count](https://codeclimate.com/github/steem-third-party/STEEMSTARS/badges/issue_count.svg)](https://codeclimate.com/github/steem-third-party/STEEMSTARS)
 
 
 SteemStars is admittedly somewhat of an ambitious project but nonetheless.

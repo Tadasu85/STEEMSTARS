@@ -8,7 +8,7 @@ env:
 script: 
   - RAILS_ENV=test bundle exec rake db:migrate --trace
   - bundle exec rake db:test:prepare
-  - bundle exec rspec spec
+  - bundle exec rspec
 before_script:
   - psql -c 'create database my_database_test;' -U postgres
 bundler_args: --binstubs=./bundler_stubs
