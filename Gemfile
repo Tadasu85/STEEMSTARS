@@ -5,7 +5,7 @@ gem 'radiator', git: 'https://github.com/inertia186/radiator.git'
 gem 'responders', '~> 2.2.0'
 gem 'jbuilder', '~> 2.5'
 gem 'node'
-gem 'redis'
+gem 'redis', :group => [:development, :test]
 gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem 'realtime'
@@ -13,7 +13,7 @@ gem 'jquery-turbolinks'
 gem 'thin'
 gem 'figaro'
 gem 'rails', '>= 5.0.0.rc2', '< 5.1'
-gem 'devise'  
+gem 'devise', :group => [:development, :test]
 gem 'better_errors'
 gem 'binding_of_caller'
 gem "rspec-rails", :group => [:development, :test]
