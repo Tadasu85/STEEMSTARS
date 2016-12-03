@@ -1,16 +1,15 @@
 language: ruby
 rvm:
-   - "2.3.0"
-addons:
-  code_climate:
-  repo_token: 8ce8151bd5f6bdd2683227fb31ecb539ecd3271a6d608ee6d2d5b035141c475d
-services:
-  - postgresql
-  - redis
-script:
-  - RAILS_ENV=test
-  - psql -c 'create database my_database_test;' -U postgres
-  - bundle exec rake db:setup
-  - bundle exec rspec spec/rails_helper.rb
+  - "2.2.0"
+env:
+  - DB=psql
+script: 
+  - RAILS_ENV=test bundle exec rake db:migrate --trace
+  - bundle exec rake db:test:prepare
+  - bundle exec rspec spec/
+before_script:
+  - psql -e 'create database my_database_test'
+bundler_args: --binstubs=./bundler_stubs
+
 after_success:
   - bundle exec codeclimate-test-reporter
