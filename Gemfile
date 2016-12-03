@@ -29,8 +29,7 @@ group :development do
   gem 'rails_layout'
 end
 group :test do
-  gem 'better_errors'
-  gem 'binding_of_caller'
+ 
   gem "rspec"
   gem 'rake'
   gem 'rails-controller-testing'

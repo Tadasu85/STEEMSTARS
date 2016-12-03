@@ -1,6 +1,8 @@
 language: ruby
 rvm:
   - "2.3.0"
+services:
+  - postgresql
 env:
   - DB=psql
 script: 
@@ -8,7 +10,7 @@ script:
   - bundle exec rake db:test:prepare
   - bundle exec rspec spec/
 before_script:
-  - psql -c 'create database my_database_test'
+  - psql -c 'create database my_database_test;' -U postgres
 bundler_args: --binstubs=./bundler_stubs
 
 after_success:
