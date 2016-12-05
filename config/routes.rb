@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'pages#index'
+  root to: 'pages#secret'
   
   get :secret, to: 'pages#secret', as: :secret
   

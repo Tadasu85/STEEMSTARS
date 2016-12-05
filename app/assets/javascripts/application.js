@@ -20,7 +20,7 @@
 //= require turbolinks
 document.addEventListener('turbolinks:load', function(){
 steemaccount = window.currentUser.steemaccount.toString()
-console.log(steemaccount)
+//console.log(steemaccount)
 /*global $*/
 /*global steemaccount*/
 /*global cytoscape*/
@@ -31,7 +31,79 @@ var cy = window.cy = cytoscape({
     autoungrabify: false,
     zoom: 1,
     layout: {
-        name: 'cose',
+        name: 'cose'
+           
+    },
+    style: [{
+            selector: 'node',
+            style: {
+                'height': 20,
+                'width': 20,
+                'background-color': '#FEE003',
+                'label': 'data(label)',
+                'color': '#FFFFFF',
+                'text-transform': 'lowercase',
+                'font-weight': 'bold',
+                'font-style': 'italic',
+                'font-family': '"Times New Roman", Georgia, Serif',
+                'text-shadow-blur': 100,
+                'shadow-blur': 10,
+                'background-opacity': 0.6
+            }
+        }, {
+            selector: 'edge',
+            style: {
+                'line-color': '#FFFF',
+                'width': 1,
+                'opacity': 0.4
+            }
+           },
+           {
+            selector: '.mutual',
+            style: {
+                'height': 40,
+                'width': 40,
+                'background-color': 'green',
+                'label': 'data(label)',
+                'color': '#FFFFFF',
+                'text-transform': 'lowercase',
+                'font-weight': 'bold',
+                'font-style': 'italic',
+                'font-family': '"Times New Roman", Georgia, Serif',
+                'text-shadow-blur': 100,
+                'shadow-blur': 10,
+                'background-opacity': 0.6
+            }
+        },
+          ],
+    elements: [{
+            data: {
+                id: steemaccount,
+                label: steemaccount
+                   },
+            classes: 'background'
+              }]
+});
+
+$.getJSON('/accounts/' + steemaccount + '/followers.json', function(followerS) {
+           for (var prop in followerS) {
+               /*global cy*/
+           cy.add({group: "nodes", data: {id: followerS[prop], label: followerS[prop]}, position: {}});
+           cy.add({group: "edges", data: {source: followerS[prop], target: steemaccount}});
+                                       }
+});
+$.getJSON('/accounts/' + steemaccount + '/follows.json', function(followS) {
+           for (var prop in followS) {
+               /*global cy*/
+               if (cy.getElementById(followS[prop]).length==0){
+               cy.add({group: "nodes", data: {id: followS[prop], label: followS[prop]}, position: {}});
+               cy.add({group: "edges", data: {source: followS[prop], target: steemaccount}})
+               }
+               else{
+                   cy.getElementById(followS[prop]).addClass('mutual')
+                    }
+                                        }
+cy.layout({name: 'cose',
             // Called on `layoutready`
             ready: function() {},
             // Called on `layoutstop`
@@ -53,7 +125,7 @@ var cy = window.cy = cytoscape({
             // Randomize the initial positions of the nodes (true) or use existing positions (false)
             randomize: true,
             // Extra spacing between components in non-compound graphs
-            componentSpacing: 30,
+            componentSpacing: 99999999,
             // Node repulsion (non overlapping) multiplier
             nodeRepulsion: function(node) {
                 return 400000;
@@ -81,55 +153,6 @@ var cy = window.cy = cytoscape({
             // Lower temperature threshold (below this point the layout will end)
             minTemp: 1.0,
             // Whether to use threading to speed up the layout
-            useMultitasking: true
-    },
-    style: [{
-            selector: 'node',
-            style: {
-                'height': 20,
-                'width': 20,
-                'background-color': '#FEE003',
-                'label': 'data(label)',
-                'color': '#FFFFFF',
-                'text-transform': 'lowercase',
-                'font-weight': 'bold',
-                'font-style': 'italic',
-                'font-family': '"Times New Roman", Georgia, Serif',
-                'text-shadow-blur': 100,
-                'shadow-blur': 10,
-                'background-opacity': 0.6
-            }
-        }, {
-            selector: 'edge',
-            style: {
-                'line-color': '#FFFF',
-                'width': 1,
-                'opacity': 0.4
-            }
-           }
-          ],
-    elements: [{
-            data: {
-                id: "parent",
-                label: steemaccount
-                   },
-            classes: 'background'
-              }]
-});
-
-$.getJSON('/accounts/' + steemaccount + '/followers.json', function(followerS) {
-           for (var prop in followerS) {
-               /*global cy*/
-           cy.add({group: "nodes", data: {id: 'frs' + prop, label: followerS[prop]}, position: {}});
-           cy.add({group: "edges", data: {source: 'frs' + prop, target: "parent"}});
-                                       }
-});
-$.getJSON('/accounts/' + steemaccount + '/follows.json', function(followS) {
-           for (var prop in followS) {
-               /*global cy*/
-           cy.add({group: "nodes", data: {id: 'fs' + prop, label: followS[prop]}, position: {}});
-           cy.add({group: "edges", data: {source: 'fs' + prop, target: "parent"}});
-                                       }
-                                       cy.layout({name:"cose"});
+            useMultitasking: true});
 });
 })

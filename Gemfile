@@ -18,12 +18,13 @@ gem 'better_errors'
 gem 'binding_of_caller'
 gem "rspec-rails", :group => [:development, :test]
 gem 'pg' , :group => [:development, :test]
+gem 'turbolinks'
 
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
   gem 'uglifier', '>= 1.0.3'
-  gem 'turbolinks'
+  
 end
 group :development do
   gem 'rails_layout'
