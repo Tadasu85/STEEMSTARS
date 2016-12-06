@@ -27,7 +27,7 @@ steemaccount = window.currentUser.steemaccount.toString()
 var cy = window.cy = cytoscape({
     container: document.getElementById('cy'),
     boxSelectionEnabled: true,
-    autounselectify: true,
+    autounselectify: false,
     autoungrabify: false,
     zoom: 1,
     layout: {
@@ -61,8 +61,8 @@ var cy = window.cy = cytoscape({
            {
             selector: '.mutual',
             style: {
-                'height': 40,
-                'width': 40,
+                'height': 20,
+                'width': 20,
                 'background-color': 'green',
                 'label': 'data(label)',
                 'color': '#FFFFFF',
@@ -74,7 +74,24 @@ var cy = window.cy = cytoscape({
                 'shadow-blur': 10,
                 'background-opacity': 0.6
             }
-        },
+           },
+            {
+            selector: '.follows',
+            style: {
+                'height': 20,
+                'width': 20,
+                'background-color': 'blue',
+                'label': 'data(label)',
+                'color': '#FFFFFF',
+                'text-transform': 'lowercase',
+                'font-weight': 'bold',
+                'font-style': 'italic',
+                'font-family': '"Times New Roman", Georgia, Serif',
+                'text-shadow-blur': 100,
+                'shadow-blur': 10,
+                'background-opacity': 0.6
+            }
+        }
           ],
     elements: [{
             data: {
@@ -97,12 +114,25 @@ $.getJSON('/accounts/' + steemaccount + '/follows.json', function(followS) {
                /*global cy*/
                if (cy.getElementById(followS[prop]).length==0){
                cy.add({group: "nodes", data: {id: followS[prop], label: followS[prop]}, position: {}});
-               cy.add({group: "edges", data: {source: followS[prop], target: steemaccount}})
+               cy.add({group: "edges", data: {source: followS[prop], target: steemaccount}});
+               cy.getElementById(followS[prop]).addClass('follows')
                }
                else{
                    cy.getElementById(followS[prop]).addClass('mutual')
                     }
                                         }
+function checkMap(){
+    cy.nodes().forEach(function( ele ){
+       $.getJSON('/accounts/' + ele.id() + '/followers.json', function(selectedAccount){
+           for (var prop in selectedAccount)
+            if (cy.getElementById(selectedAccount[prop]).length==1){
+                cy.add({group: "edges", data: {source: ele.id(), target: selectedAccount[prop]}});
+                console.log("yes");
+            }
+        });
+                                    });
+}
+checkMap()
 cy.layout({name: 'cose',
             // Called on `layoutready`
             ready: function() {},
