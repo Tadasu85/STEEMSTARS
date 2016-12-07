@@ -26,10 +26,10 @@ steemaccount = window.currentUser.steemaccount.toString()
 /*global cytoscape*/
 var cy = window.cy = cytoscape({
     container: document.getElementById('cy'),
-    boxSelectionEnabled: true,
+    boxSelectionEnabled: false,
     autounselectify: false,
-    autoungrabify: false,
-    zoom: 1,
+    autoungrabify: true,
+    zoom: .5,
     layout: {
         name: 'cose'
            
@@ -37,12 +37,13 @@ var cy = window.cy = cytoscape({
     style: [{
             selector: 'node',
             style: {
-                'height': 20,
-                'width': 20,
+                'height': 10,
+                'width': 10,
                 'background-color': '#FEE003',
                 'label': 'data(label)',
                 'color': '#FFFFFF',
                 'text-transform': 'lowercase',
+                'font-size': 8,
                 'font-weight': 'bold',
                 'font-style': 'italic',
                 'font-family': '"Times New Roman", Georgia, Serif',
@@ -61,8 +62,6 @@ var cy = window.cy = cytoscape({
            {
             selector: '.mutual',
             style: {
-                'height': 20,
-                'width': 20,
                 'background-color': 'green',
                 'label': 'data(label)',
                 'color': '#FFFFFF',
@@ -78,12 +77,27 @@ var cy = window.cy = cytoscape({
             {
             selector: '.follows',
             style: {
-                'height': 20,
-                'width': 20,
                 'background-color': 'blue',
                 'label': 'data(label)',
                 'color': '#FFFFFF',
                 'text-transform': 'lowercase',
+                'font-weight': 'bold',
+                'font-style': 'italic',
+                'font-family': '"Times New Roman", Georgia, Serif',
+                'text-shadow-blur': 100,
+                'shadow-blur': 10,
+                'background-opacity': 0.6
+            }
+            },
+            {
+            selector: ':selected',
+            style: {
+                'height': 20,
+                'width': 20,
+                'label': 'data(label)',
+                'font-size': 18,
+                'color': '#FFFFFF',
+                'text-transform': 'uppercase',
                 'font-weight': 'bold',
                 'font-style': 'italic',
                 'font-family': '"Times New Roman", Georgia, Serif',
@@ -121,18 +135,18 @@ $.getJSON('/accounts/' + steemaccount + '/follows.json', function(followS) {
                    cy.getElementById(followS[prop]).addClass('mutual')
                     }
                                         }
-function checkMap(){
-    cy.nodes().forEach(function( ele ){
-       $.getJSON('/accounts/' + ele.id() + '/followers.json', function(selectedAccount){
-           for (var prop in selectedAccount)
-            if (cy.getElementById(selectedAccount[prop]).length==1){
+});
+                                     
+cy.nodes().forEach(function( ele ){
+    $.getJSON('/accounts/' + ele.id() + '/followers.json', function(selectedAccount){
+        for (var prop in selectedAccount)
+        if (cy.getElementById(selectedAccount[prop]).length==1){
                 cy.add({group: "edges", data: {source: ele.id(), target: selectedAccount[prop]}});
                 console.log("yes");
-            }
-        });
+        
+        };
+                                                                                        });
                                     });
-}
-checkMap()
 cy.layout({name: 'cose',
             // Called on `layoutready`
             ready: function() {},
@@ -142,7 +156,7 @@ cy.layout({name: 'cose',
             animate: true,
             // The layout animates only after this many milliseconds
             // (prevents flashing on fast runs)
-            animationThreshold: 20,
+            animationThreshold: 1,
             // Number of iterations between consecutive screen positions update
             // (0 -> only updated on the end)
             refresh: 50,
@@ -155,20 +169,20 @@ cy.layout({name: 'cose',
             // Randomize the initial positions of the nodes (true) or use existing positions (false)
             randomize: true,
             // Extra spacing between components in non-compound graphs
-            componentSpacing: 99999999,
+            componentSpacing: 50,
             // Node repulsion (non overlapping) multiplier
             nodeRepulsion: function(node) {
-                return 400000;
+                return 500;
             },
             // Node repulsion (overlapping) multiplier
             nodeOverlap: 10,
             // Ideal edge (non nested) length
             idealEdgeLength: function(edge) {
-                return 10;
+                return 25;
             },
             // Divisor to compute edge forces
             edgeElasticity: function(edge) {
-                return 100;
+                return 50;
             },
             // Nesting factor (multiplier) to compute ideal edge length for nested edges
             nestingFactor: 5,
@@ -183,6 +197,5 @@ cy.layout({name: 'cose',
             // Lower temperature threshold (below this point the layout will end)
             minTemp: 1.0,
             // Whether to use threading to speed up the layout
-            useMultitasking: true});
+            useMultitasking: false});
 });
-})
