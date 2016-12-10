@@ -18,11 +18,10 @@
 //= require jquery_ujs
 //= require bootstrap/dropdown
 //= require turbolinks
+var steemaccount;
 document.addEventListener('turbolinks:load', function(){
-steemaccount = window.currentUser.steemaccount.toString()
-//console.log(steemaccount)
+steemaccount = window.currentUser.steemaccount.toString();
 /*global $*/
-/*global steemaccount*/
 /*global cytoscape*/
 var cy = window.cy = cytoscape({
     container: document.getElementById('cy'),
@@ -32,7 +31,6 @@ var cy = window.cy = cytoscape({
     zoom: .5,
     layout: {
         name: 'cose'
-           
     },
     style: [{
             selector: 'node',
@@ -115,38 +113,7 @@ var cy = window.cy = cytoscape({
             classes: 'background'
               }]
 });
-
-$.getJSON('/accounts/' + steemaccount + '/followers.json', function(followerS) {
-           for (var prop in followerS) {
-               /*global cy*/
-           cy.add({group: "nodes", data: {id: followerS[prop], label: followerS[prop]}, position: {}});
-           cy.add({group: "edges", data: {source: followerS[prop], target: steemaccount}});
-                                       }
-});
-$.getJSON('/accounts/' + steemaccount + '/follows.json', function(followS) {
-           for (var prop in followS) {
-               /*global cy*/
-               if (cy.getElementById(followS[prop]).length==0){
-               cy.add({group: "nodes", data: {id: followS[prop], label: followS[prop]}, position: {}});
-               cy.add({group: "edges", data: {source: followS[prop], target: steemaccount}});
-               cy.getElementById(followS[prop]).addClass('follows')
-               }
-               else{
-                   cy.getElementById(followS[prop]).addClass('mutual')
-                    }
-                                        }
-});
-                                     
-cy.nodes().forEach(function( ele ){
-    $.getJSON('/accounts/' + ele.id() + '/followers.json', function(selectedAccount){
-        for (var prop in selectedAccount)
-        if (cy.getElementById(selectedAccount[prop]).length==1){
-                cy.add({group: "edges", data: {source: ele.id(), target: selectedAccount[prop]}});
-                console.log("yes");
-        
-        };
-                                                                                        });
-                                    });
+/*global layout*/
 cy.layout({name: 'cose',
             // Called on `layoutready`
             ready: function() {},
@@ -197,5 +164,55 @@ cy.layout({name: 'cose',
             // Lower temperature threshold (below this point the layout will end)
             minTemp: 1.0,
             // Whether to use threading to speed up the layout
-            useMultitasking: false});
+            useMultitasking: true});
+});
+function addFollowers(){
+console.log("adding followers");
+$.getJSON('/accounts/' + steemaccount + '/followers.json', function(followerS) {
+   for (var prop in followerS) {
+       cy.add({group: "nodes", data: {id: followerS[prop], label: followerS[prop]}, position: {}});
+       cy.add({group: "edges", data: {source: followerS[prop], target: steemaccount}});
+        };
+        console.log("Followers:" + followerS.length)
+    });
+cy.layout({name: 'cose'});
+};
+function addFollows(){
+console.log("adding follows");
+$.getJSON('/accounts/' + steemaccount + '/follows.json', function(followS) {
+           for (var prop in followS) {
+               /*global cy*/
+               if (cy.getElementById(followS[prop]).length==0){
+               cy.add({group: "nodes", data: {id: followS[prop], label: followS[prop]}, position: {}});
+               cy.add({group: "edges", data: {source: followS[prop], target: steemaccount}});
+               cy.getElementById(followS[prop]).addClass('follows')
+               }
+               else {cy.getElementById(followS[prop]).addClass('mutual')};
+               };
+        console.log("Follows:" + followS.length);
+        alert("Follows:" + followS.length);
+        !!window.attachEvent;
+    this.dispatchEvent('Follows:')
+    });
+cy.layout({name: 'cose'});
+};
+function addEdges(){
+console.log("adding edges");
+cy.nodes().forEach(function( ele ){
+    $.getJSON('/accounts/' + ele.id() + '/followers.json', function(selectedAccount){
+        for (var prop in selectedAccount)
+        if (cy.getElementById(selectedAccount[prop]).length==1){
+                cy.add({group: "edges", data: {source: ele.id(), target: selectedAccount[prop]}});
+                console.log("yes");
+            };
+        });
+    });
+cy.layout({name: 'cose'});
+};
+document.addEventListener('turbolinks:load', function(){
+    addFollowers();
+    addFollows();
+});
+document.addEventListener('Follows:', function(){
+    alert("true")
 });
