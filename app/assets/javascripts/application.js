@@ -18,6 +18,8 @@
 //= require jquery_ujs
 //= require bootstrap/dropdown
 //= require turbolinks
+function postpone( fun )
+{window.setTimeout(fun, 6000)};
 var steemaccount;
 document.addEventListener('turbolinks:load', function(){
 steemaccount = window.currentUser.steemaccount.toString();
@@ -113,17 +115,22 @@ var cy = window.cy = cytoscape({
             classes: 'background'
               }]
 });
+addFollowers();
+setTimeout(function() {
+    addFollows();
+}, 2000);
 /*global layout*/
-cy.layout({name: 'cose',
+setTimeout(function() {
+    cy.layout({name: 'cose',
             // Called on `layoutready`
             ready: function() {},
             // Called on `layoutstop`
             stop: function() {},
             // Whether to animate while running the layout
-            animate: true,
+            animate: false,
             // The layout animates only after this many milliseconds
             // (prevents flashing on fast runs)
-            animationThreshold: 1,
+            animationThreshold: 0,
             // Number of iterations between consecutive screen positions update
             // (0 -> only updated on the end)
             refresh: 50,
@@ -165,6 +172,7 @@ cy.layout({name: 'cose',
             minTemp: 1.0,
             // Whether to use threading to speed up the layout
             useMultitasking: true});
+}, 7000);
 });
 function addFollowers(){
 console.log("adding followers");
@@ -173,7 +181,8 @@ $.getJSON('/accounts/' + steemaccount + '/followers.json', function(followerS) {
        cy.add({group: "nodes", data: {id: followerS[prop], label: followerS[prop]}, position: {}});
        cy.add({group: "edges", data: {source: followerS[prop], target: steemaccount}});
         };
-        console.log("Followers:" + followerS.length)
+        console.log("Followers:" + followerS.length);
+        cy.emit('done followers');
     });
 cy.layout({name: 'cose'});
 };
@@ -190,11 +199,7 @@ $.getJSON('/accounts/' + steemaccount + '/follows.json', function(followS) {
                else {cy.getElementById(followS[prop]).addClass('mutual')};
                };
         console.log("Follows:" + followS.length);
-        alert("Follows:" + followS.length);
-        !!window.attachEvent;
-    this.dispatchEvent('Follows:')
     });
-cy.layout({name: 'cose'});
 };
 function addEdges(){
 console.log("adding edges");
@@ -207,12 +212,4 @@ cy.nodes().forEach(function( ele ){
             };
         });
     });
-cy.layout({name: 'cose'});
 };
-document.addEventListener('turbolinks:load', function(){
-    addFollowers();
-    addFollows();
-});
-document.addEventListener('Follows:', function(){
-    alert("true")
-});
