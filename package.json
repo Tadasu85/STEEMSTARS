@@ -1,0 +1,40 @@
+{
+  "name": "steemstars",
+  "version": "1.0.0",
+  "dependencies": {
+        "socket.io": "1.0.x",
+        "redis": "0.7.3",
+        "pg": "2.11.0",
+        "underscore": "1.5.2",
+        "cookie": "0.1.x",
+        "sentry-node": "0.2.x",
+        "nodetime": "0.8.x",
+        "nodemon": "1.x",
+        "forever": "0.10.x",
+        "forever-monitor": "1.2.x",
+        "cytoscape": "2.7.13"
+    },
+  "description": "node server for steemstars",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/steem-third-party/STEEMSTARS.git"
+  },
+  "keywords": [
+    "steem",
+    "steemstars"
+  ],
+  "author": "raymon johnstone",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/steem-third-party/STEEMSTARS/issues"
+  },
+  "homepage": "https://github.com/steem-third-party/STEEMSTARS#readme"
+}
