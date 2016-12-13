@@ -1,4 +1,5 @@
 Rails.application.configure do
+  ENV["https://steemstars-tadasu85.c9users.io"] || 'redis://127.0.0.1:6379/0'
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
