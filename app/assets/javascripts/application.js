@@ -182,12 +182,12 @@ $.getJSON('/accounts/' + steemaccount + '/followers.json', function(followerS) {
    for (var prop in followerS) {
        cy.add({group: "nodes", data: {id: followerS[prop], label: followerS[prop]}, position: {}});
        cy.add({group: "edges", data: {source: followerS[prop], target: steemaccount}});
-        };
+        }
         console.log("Followers:" + followerS.length);
         cy.emit('done followers');
     });
 cy.layout({name: 'cose'});
-};
+}
 function addFollows(){
 console.log("adding follows");
 $.getJSON('/accounts/' + steemaccount + '/follows.json', function(followS) {
@@ -198,11 +198,11 @@ $.getJSON('/accounts/' + steemaccount + '/follows.json', function(followS) {
                cy.add({group: "edges", data: {source: followS[prop], target: steemaccount}});
                cy.getElementById(followS[prop]).addClass('follows')
                }
-               else {cy.getElementById(followS[prop]).addClass('mutual')};
-               };
+               else {cy.getElementById(followS[prop]).addClass('mutual')}
+               }
         console.log("Follows:" + followS.length);
     });
-};
+}
 function addEdges(){
 console.log("adding edges");
 cy.nodes().forEach(function( ele ){
@@ -221,4 +221,4 @@ cy.nodes().forEach(function( ele ){
         //    };
     //    });
     });
-};
+}
