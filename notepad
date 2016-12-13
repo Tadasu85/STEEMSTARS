@@ -4,8 +4,6 @@ sudo service postgresql start
 sudo service redis-server start
 rails s -b $IP -p $PORT
 
-
-
 redis-cli
 
 workspace/node-rails (devel) $ node node-rails-server.js
