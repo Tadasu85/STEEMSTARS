@@ -19,7 +19,7 @@
   },
   "description": "node server for steemstars",
   "main": "index.js",
-  "directories": {node --
+  "directories": {
     "doc": "doc",
     "test": "test"
   },
