@@ -16,8 +16,8 @@ gem 'rails', '>= 5.0.0.rc2', '< 5.1'
 gem 'devise'
 gem 'better_errors'
 gem 'binding_of_caller'
-gem "rspec-rails", :group => [:development, :test]
-gem 'pg' , :group => [:development, :test]
+gem "rspec-rails"
+gem 'pg'
 gem 'turbolinks'
 gem 'rake'
 
