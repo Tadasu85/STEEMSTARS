@@ -1,4 +1,3 @@
-var cytoscape = require('cytoscape');
 module.exports = {
     
     loadSocketIo: function loadSocketIo(redis) {
