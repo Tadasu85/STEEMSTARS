@@ -14,9 +14,12 @@
         "forever-monitor": "1.2.x",
         "cytoscape": "2.7.13"
     },
+  "engines": {
+  "node": "4.5.0"
+  },
   "description": "node server for steemstars",
   "main": "index.js",
-  "directories": {
+  "directories": {node --
     "doc": "doc",
     "test": "test"
   },
