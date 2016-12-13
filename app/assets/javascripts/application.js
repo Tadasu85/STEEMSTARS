@@ -18,8 +18,6 @@
 //= require jquery_ujs
 //= require bootstrap/dropdown
 //= require turbolinks
-function postpone( fun )
-{window.setTimeout(fun, 6000)};
 var steemaccount;
 document.addEventListener('turbolinks:load', function(){
 steemaccount = window.currentUser.steemaccount.toString();
@@ -173,6 +171,10 @@ setTimeout(function() {
             // Whether to use threading to speed up the layout
             useMultitasking: true});
 }, 7000);
+//setTimeout(function() {
+//    addEdges();
+//}, 9000);
+
 });
 function addFollowers(){
 console.log("adding followers");
@@ -204,12 +206,19 @@ $.getJSON('/accounts/' + steemaccount + '/follows.json', function(followS) {
 function addEdges(){
 console.log("adding edges");
 cy.nodes().forEach(function( ele ){
-    $.getJSON('/accounts/' + ele.id() + '/followers.json', function(selectedAccount){
-        for (var prop in selectedAccount)
-        if (cy.getElementById(selectedAccount[prop]).length==1){
-                cy.add({group: "edges", data: {source: ele.id(), target: selectedAccount[prop]}});
-                console.log("yes");
-            };
+    $.getJSON('/accounts/' + ele.id() + '/followers.json', function(accountsdata){
+        console.log(JSON.stringify(accountsdata));
+        ele.scratch(JSON.stringify(accountsdata));
         });
+    //$.getJSON('/accounts/' + ele.id() + '/followers.json', function(){
+       // for (var prop in selectedAccount) {
+    //        ele.scratch(responseJSON);
+        //if (cy.getElementById(selectedAccount[prop]).length==1){
+        //        cy.add({group: "edges", data: {source: ele.id(), target: selectedAccount[prop]}});
+    //            console.log(data.responseJSON());
+    //            console.log("yes");
+        //        };
+        //    };
+    //    });
     });
 };
