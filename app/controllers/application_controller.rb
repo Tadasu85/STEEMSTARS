@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
   
   def realtime_server_url
     # point this to your node.js-socket.io-redis/zmq realtime server (you can set this later)
-    return 'https://steemstars-tadasu85.c9users.io:8082'
+    return 'steemstars.herokuapp.com'
   end
   
 end
