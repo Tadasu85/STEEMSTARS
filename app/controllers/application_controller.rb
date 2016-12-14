@@ -16,7 +16,9 @@ class ApplicationController < ActionController::Base
   end
   end
   def realtime_user_id
-    current_user&.id
+    if current_user
+      current_user&.id
+    end
   end
   helper_method :api, :follow_api
   private
