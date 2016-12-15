@@ -6,8 +6,6 @@ gem 'responders', '~> 2.2.0'
 gem 'jbuilder', '~> 2.5'
 gem 'node'
 gem 'redis'
-gem 'bootstrap-sass'
-gem 'jquery-rails'
 gem 'realtime'
 gem 'jquery-turbolinks'
 gem 'thin'
@@ -20,12 +18,13 @@ gem "rspec-rails"
 gem 'pg'
 gem 'turbolinks'
 gem 'rake'
+gem 'jquery-rails'
+gem 'bootstrap-sass'
 
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
   gem 'uglifier', '>= 1.0.3'
-  
 end
 group :development do
   gem 'rails_layout'

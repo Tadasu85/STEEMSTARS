@@ -14,27 +14,27 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2016-12-03T03:34:56+00:00">2016-12-03T03:34:56+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2016-12-14T21:56:15+00:00">2016-12-14T21:56:15+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="yellow">81.99%</span></span>
+    (<span class="covered_percent"><span class="yellow">81.85%</span></span>
      covered at
      <span class="covered_strength">
        <span class="red">
-         0.87
+         0.88
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
-    <b>48</b> files in total.
-    <b>311</b> relevant lines. 
-    <span class="green"><b>255</b> lines covered</span> and
-    <span class="red"><b>56</b> lines missed </span>
+    <b>49</b> files in total.
+    <b>314</b> relevant lines. 
+    <span class="green"><b>257</b> lines covered</span> and
+    <span class="red"><b>57</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -52,12 +52,12 @@
       
       <tr>
         <td class="strong"><a href="#662a8fb8a5b2d6fee25fa42f69ec75dd39917093" class="src_link" title="app/controllers/application_controller.rb">app/controllers/application_controller.rb</a></td>
-        <td class="red strong">71.43 %</td>
-        <td>36</td>
-        <td>21</td>
+        <td class="red strong">68.18 %</td>
+        <td>38</td>
+        <td>22</td>
         <td>15</td>
-        <td>6</td>
-        <td>1.0</td>
+        <td>7</td>
+        <td>1.1</td>
       </tr>
       
       <tr>
@@ -203,9 +203,9 @@
       <tr>
         <td class="strong"><a href="#57b438257d09ed02a372cb5cfcd997767ceb0f22" class="src_link" title="config/application.rb">config/application.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>18</td>
-        <td>6</td>
-        <td>6</td>
+        <td>19</td>
+        <td>7</td>
+        <td>7</td>
         <td>0</td>
         <td>1.0</td>
       </tr>
@@ -331,9 +331,19 @@
       </tr>
       
       <tr>
+        <td class="strong"><a href="#df98bf22d90643a49520952c5b5777a694405725" class="src_link" title="config/initializers/npm.rb">config/initializers/npm.rb</a></td>
+        <td class="green strong">100.0 %</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+        <td>1.0</td>
+      </tr>
+      
+      <tr>
         <td class="strong"><a href="#743501f0b87079401ac444c1665d180f787fe359" class="src_link" title="config/initializers/redis.rb">config/initializers/redis.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>5</td>
+        <td>6</td>
         <td>4</td>
         <td>4</td>
         <td>0</td>
@@ -549,11 +559,11 @@
         <div class="source_table" id="662a8fb8a5b2d6fee25fa42f69ec75dd39917093">
   <div class="header">
     <h3>app/controllers/application_controller.rb</h3>
-    <h4><span class="red">71.43 %</span> covered</h4>
+    <h4><span class="red">68.18 %</span> covered</h4>
     <div>
-      <b>21</b> relevant lines. 
+      <b>22</b> relevant lines. 
       <span class="green"><b>15</b> lines covered</span> and
-      <span class="red"><b>6</b> lines missed.</span>
+      <span class="red"><b>7</b> lines missed.</span>
     </div>
   </div>
   
@@ -668,109 +678,121 @@
           <code class="ruby">  def realtime_user_id</code>
         </li>
       
-        <li class="covered" data-hits="7" data-linenumber="19">
-          <span class="hits">7</span>
+        <li class="covered" data-hits="10" data-linenumber="19">
+          <span class="hits">10</span>
           
-          <code class="ruby">    current_user&amp;.id</code>
+          <code class="ruby">    if current_user</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="20">
+        <li class="missed" data-hits="0" data-linenumber="20">
+          
+          
+          <code class="ruby">      current_user&amp;.id</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="21">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="22">
           
           
           <code class="ruby">  end</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="21">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  helper_method :api, :follow_api</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="22">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  private</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="23">
           <span class="hits">1</span>
           
+          <code class="ruby">  helper_method :api, :follow_api</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="24">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  private</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="25">
+          <span class="hits">1</span>
+          
           <code class="ruby">  def api</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="24">
+        <li class="missed" data-hits="0" data-linenumber="26">
           
           
           <code class="ruby">    @@API ||= Radiator::Api.new</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="25">
+        <li class="never" data-hits="" data-linenumber="27">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="26">
+        <li class="covered" data-hits="1" data-linenumber="28">
           <span class="hits">1</span>
           
           <code class="ruby">  def follow_api</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="27">
+        <li class="missed" data-hits="0" data-linenumber="29">
           
           
           <code class="ruby">    @@FOLLOW_API ||= Radiator::FollowApi.new</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="28">
+        <li class="never" data-hits="" data-linenumber="30">
           
           
           <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="29">
-          
-          
-          <code class="ruby">  </code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="30">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def realtime_server_url</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="31">
           
           
-          <code class="ruby">    # point this to your node.js-socket.io-redis/zmq realtime server (you can set this later)</code>
+          <code class="ruby">  </code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="32">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="1" data-linenumber="32">
+          <span class="hits">1</span>
           
-          <code class="ruby">    return &#39;https://steemstars-tadasu85.c9users.io:8082&#39;</code>
+          <code class="ruby">  def realtime_server_url</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="33">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">    # point this to your node.js-socket.io-redis/zmq realtime server (you can set this later)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="34">
+        <li class="covered" data-hits="2" data-linenumber="34">
+          <span class="hits">2</span>
           
-          
-          <code class="ruby">  </code>
+          <code class="ruby">    return &#39;https://steemstars.herokuapp.com/&#39;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="35">
           
           
-          <code class="ruby">end</code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="36">
+          
+          
+          <code class="ruby">  </code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="37">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="38">
           
           
           <code class="ruby"></code>
@@ -1799,8 +1821,8 @@
     <h3>config/application.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>6</b> relevant lines. 
-      <span class="green"><b>6</b> lines covered</span> and
+      <b>7</b> relevant lines. 
+      <span class="green"><b>7</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -1874,43 +1896,49 @@
           <code class="ruby">    class Application &lt; Rails::Application</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="12">
+        <li class="covered" data-hits="1" data-linenumber="12">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">        </code>
+          <code class="ruby">        config.assets.paths &lt;&lt; Rails.root.join(&#39;node_modules&#39;)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="13">
           
           
-          <code class="ruby">    # Settings in config/environments/* take precedence over those specified here.</code>
+          <code class="ruby">        </code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="14">
           
           
-          <code class="ruby">    # Application configuration should go into files in config/initializers</code>
+          <code class="ruby">    # Settings in config/environments/* take precedence over those specified here.</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="15">
           
           
-          <code class="ruby">    # -- all .rb files in that directory are automatically loaded.</code>
+          <code class="ruby">    # Application configuration should go into files in config/initializers</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="16">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">    # -- all .rb files in that directory are automatically loaded.</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="17">
           
           
-          <code class="ruby"> </code>
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="18">
+          
+          
+          <code class="ruby"> </code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="19">
           
           
           <code class="ruby">end</code>
@@ -4548,6 +4576,30 @@
   </pre>
 </div>
       
+        <div class="source_table" id="df98bf22d90643a49520952c5b5777a694405725">
+  <div class="header">
+    <h3>config/initializers/npm.rb</h3>
+    <h4><span class="green">100.0 %</span> covered</h4>
+    <div>
+      <b>1</b> relevant lines. 
+      <span class="green"><b>1</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
+    </div>
+  </div>
+  
+  <pre>
+    <ol>
+      
+        <li class="covered" data-hits="1" data-linenumber="1">
+          <span class="hits">1</span>
+          
+          <code class="ruby">system &#39;npm install&#39; if Rails.env.development? || Rails.env.test?</code>
+        </li>
+      
+    </ol>
+  </pre>
+</div>
+      
         <div class="source_table" id="743501f0b87079401ac444c1665d180f787fe359">
   <div class="header">
     <h3>config/initializers/redis.rb</h3>
@@ -4577,7 +4629,7 @@
         <li class="covered" data-hits="1" data-linenumber="3">
           <span class="hits">1</span>
           
-          <code class="ruby">location = ENV[&quot;https://steemstars-tadasu85.c9users.io&quot;] || &#39;redis://127.0.0.1:6379/0&#39;</code>
+          <code class="ruby">location = ENV[&quot;REDISTOGO_URL&quot;] || &#39;redis://127.0.0.1:6379/0&#39;</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="4">
@@ -4589,7 +4641,13 @@
         <li class="covered" data-hits="1" data-linenumber="5">
           <span class="hits">1</span>
           
-          <code class="ruby">$redis = Redis.new(:host =&gt; uri.host, :port =&gt; uri.port, :password =&gt; uri.password)</code>
+          <code class="ruby">$redis = Redis.new(:url =&gt; uri)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="6">
+          
+          
+          <code class="ruby"></code>
         </li>
       
     </ol>
@@ -4817,7 +4875,7 @@
         <li class="covered" data-hits="1" data-linenumber="2">
           <span class="hits">1</span>
           
-          <code class="ruby">  root to: &#39;pages#index&#39;</code>
+          <code class="ruby">  root to: &#39;pages#secret&#39;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="3">

@@ -89,6 +89,7 @@
         null,
         1,
         1,
+        1,
         null,
         null,
         null,
@@ -516,12 +517,16 @@
         null,
         1
       ],
+      "/home/ubuntu/workspace/config/initializers/npm.rb": [
+        1
+      ],
       "/home/ubuntu/workspace/config/initializers/redis.rb": [
         1,
         null,
         1,
         1,
-        1
+        1,
+        null
       ],
       "/home/ubuntu/workspace/config/initializers/secret_token.rb": [
         null,
@@ -637,7 +642,9 @@
         null,
         null,
         1,
-        7,
+        10,
+        0,
+        null,
         null,
         1,
         1,
@@ -1123,6 +1130,6 @@
         null
       ]
     },
-    "timestamp": 1480736096
+    "timestamp": 1481752575
   }
 }
