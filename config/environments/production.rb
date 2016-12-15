@@ -86,12 +86,21 @@ Rails.application.configure do
 
 config.action_mailer.delivery_method = :smtp
 # SMTP settings for gmail
-config.action_mailer.smtp_settings = {
- :address              => "smtp.gmail.com",
- :port                 => 587,
- :user_name            => ENV['gmail_username'],
- :password             => ENV['gmail_password'],
- :authentication       => "plain",
- :enable_starttls_auto => true
+#config.action_mailer.smtp_settings = {
+# :address              => "smtp.gmail.com",
+# :port                 => 587,
+# :user_name            => ENV['gmail_username'],
+# :password             => ENV['gmail_password'],
+# :authentication       => "plain",
+# :enable_starttls_auto => true
+#}
+config.action_mailer.default_url_options = { :host => 'https://steemstars.herokuapp.com' }
+ActionMailer::Base.smtp_settings = {
+  :address        => "smtp.sendgrid.net",
+  :port           => "25",
+  :authentication => :plain,
+  :user_name      => ENV['SENDGRID_USERNAME'],
+  :password       => ENV['SENDGRID_PASSWORD'],
+  :domain         => ENV['SENDGRID_DOMAIN']
 }
 end
