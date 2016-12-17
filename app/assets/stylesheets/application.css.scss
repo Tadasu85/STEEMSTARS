@@ -33,6 +33,7 @@ body {
   color: #FFFFFF;
 }
 body{
+ min-height: vmax;
  background-image: url('background.png');
  background-repeat: no-repeat;
  background-size: cover;
@@ -40,7 +41,7 @@ body{
 }
 #cy {
   position: relative;
-  height: 720px;
+  height: auto;
   left: 0;
   top: 0;
   right: 0;
@@ -95,4 +96,13 @@ ul.nav li a {
 }
 input {
   color:#b94a48;
+}
+footer {
+  margin-bottom: 0px;
+}
+#img.source-image {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
