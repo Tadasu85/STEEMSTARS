@@ -116,7 +116,8 @@ var cy = window.cy = cytoscape({
 addFollowers();
 setTimeout(function() {
     addFollows();
-}, 2000);
+}, 1500);
+
 /*global layout*/
 setTimeout(function() {
     cy.layout({name: 'cose',
@@ -170,7 +171,7 @@ setTimeout(function() {
             minTemp: 1.0,
             // Whether to use threading to speed up the layout
             useMultitasking: true});
-}, 7000);
+}, 25000);
 //setTimeout(function() {
 //    addEdges();
 //}, 9000);
