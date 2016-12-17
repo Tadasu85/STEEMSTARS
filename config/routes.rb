@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  root to: 'pages#secret'
+  root to: 'pages#index'
   
   get :secret, to: 'pages#secret', as: :secret
+  get :legend, to: 'pages#legend'
   
   resources :widgets
   
