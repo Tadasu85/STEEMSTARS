@@ -20,6 +20,7 @@ gem 'turbolinks'
 gem 'rake'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
+gem 'rails_12factor'
 
 group :assets do
   gem 'sass-rails'
