@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  authenticated :user do
+    root :to => "pages#secret"
+    # Rails 4 users must specify the 'as' option to give it a unique name
+    # root :to => "main#dashboard", :as => "authenticated_root"
+  end
   root to: 'pages#index'
   
   get :secret, to: 'pages#secret', as: :secret
