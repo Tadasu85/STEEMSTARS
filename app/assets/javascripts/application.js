@@ -18,6 +18,7 @@
 //= require jquery_ujs
 //= require bootstrap/dropdown
 //= require turbolinks
+//= require jquery-ui
 var steemaccount;
 document.addEventListener('turbolinks:load', function(){
 steemaccount = window.currentUser.steemaccount.toString();
@@ -175,7 +176,6 @@ setTimeout(function() {
 //setTimeout(function() {
 //    addEdges();
 //}, 9000);
-
 });
 function addFollowers(){
 console.log("adding followers");
@@ -211,15 +211,5 @@ cy.nodes().forEach(function( ele ){
         console.log(JSON.stringify(accountsdata));
         ele.scratch(JSON.stringify(accountsdata));
         });
-    //$.getJSON('/accounts/' + ele.id() + '/followers.json', function(){
-       // for (var prop in selectedAccount) {
-    //        ele.scratch(responseJSON);
-        //if (cy.getElementById(selectedAccount[prop]).length==1){
-        //        cy.add({group: "edges", data: {source: ele.id(), target: selectedAccount[prop]}});
-    //            console.log(data.responseJSON());
-    //            console.log("yes");
-        //        };
-        //    };
-    //    });
     });
 }
