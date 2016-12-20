@@ -21,6 +21,7 @@ gem 'rake'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'rails_12factor'
+gem 'jquery-ui-rails'
 
 group :assets do
   gem 'sass-rails'

@@ -1,21 +1,16 @@
 Rails.application.routes.draw do
   authenticated :user do
     root :to => "pages#secret"
-    # Rails 4 users must specify the 'as' option to give it a unique name
-    # root :to => "main#dashboard", :as => "authenticated_root"
   end
-  root to: 'pages#index'
-  
+    root to: 'pages#index'
+  resources :pages do
+  end
   get :secret, to: 'pages#secret', as: :secret
   get :legend, to: 'pages#legend'
-  
   resources :widgets
-  
-  devise_for :users
-  devise_for :admins
+    devise_for :users
+    devise_for :admins
   get :currentUser, to: 'current_user#index'
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :accounts, only: [:show, :index] do
     collection do
       get :find
@@ -23,9 +18,5 @@ Rails.application.routes.draw do
     resources :followers, only: :index
     resources :follows, only: :index
   end
-  
-  match ':controller(/:action(/:id))', :via => :get
-  resources :pages do
-  end
-    
+#match ':controller(/:action(/:id))', :via => :get
 end
