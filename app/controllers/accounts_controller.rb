@@ -19,4 +19,6 @@ class AccountsController < ApplicationController
         account_name = params[:account_name].to_s.gsub('.', ',')
         redirect_to account_followers_url(account_id: account_name)
     end
+    def to_partial_path
+    end
 end
