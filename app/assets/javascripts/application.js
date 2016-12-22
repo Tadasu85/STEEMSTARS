@@ -21,7 +21,7 @@
 //= require jquery-ui
 var steemaccount;
 document.addEventListener('turbolinks:load', function(){
-steemaccount = window.currentUser.steemaccount.toString();
+steemaccount = window.currentUser.steemaccount.toString().toLowerCase();
 /*global $*/
 /*global cytoscape*/
 var cy = window.cy = cytoscape({
