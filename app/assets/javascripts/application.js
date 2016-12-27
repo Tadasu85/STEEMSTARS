@@ -273,3 +273,10 @@ cy.nodes().forEach(function( ele ){
         });
     });
 };
+function savegalaxy() {
+var jpg64 = cy.jpg({bg: 'black', full: false, scale: 1, maxWidth: 1020, maxHeight: 840});
+console.log("Saving" + jpg64)
+// put the png data in an img tag
+$('#jpg-eg').attr('src', jpg64);
+document.write('<img src="'+jpg64+'"/>');
+};
