@@ -43,7 +43,10 @@ var cy = window.cy = cytoscape({
     boxSelectionEnabled: false,
     autounselectify: false,
     autoungrabify: true,
-    zoom: .5,
+    textureOnViewport: false,
+    hideEdgesOnViewport: false,
+    zoom: 100,
+    pixelRatio: 1,
     layout: {
         name: 'cose'
     },
@@ -52,28 +55,26 @@ var cy = window.cy = cytoscape({
             style: {
                 'height': 10,
                 'width': 10,
-                'background-color': '#FEE003',
+                'background-color': 'yellow',
                 'label': 'data(label)',
                 'color': '#FFFFFF',
                 'text-transform': 'lowercase',
-                'font-size': 8,
+                'font-size': 12,
                 'font-weight': 'bold',
                 'font-style': 'italic',
                 'font-family': '"Times New Roman", Georgia, Serif',
                 'text-shadow-blur': 100,
                 'shadow-blur': 10,
-                'background-opacity': 0.6
+                'background-opacity': 0.6,
+                'min-zoomed-font-size': 16
             }
         }, {
             selector: '.followers',
             style: {
-                'height': 10,
-                'width': 10,
-                'background-color': '#FEE003',
+                'background-color': 'yellow',
                 'label': 'data(label)',
                 'color': '#FFFFFF',
                 'text-transform': 'lowercase',
-                'font-size': 8,
                 'font-weight': 'bold',
                 'font-style': 'italic',
                 'font-family': '"Times New Roman", Georgia, Serif',
@@ -174,7 +175,7 @@ if(gotalldata) {
             // Called on `layoutready`
             ready: function() {},
             // Called on `layoutstop`
-            stop: function() {},
+            stop: function() {$(document).on('pjax:end',   function() { NProgress.done();});},
             // Whether to animate while running the layout
             animate: false,
             // The layout animates only after this many milliseconds
@@ -195,14 +196,14 @@ if(gotalldata) {
             componentSpacing: 50,
             // Node repulsion (non overlapping) multiplier
             nodeRepulsion: function(node) {
-                return 500;
+                return 1;
             },
             // Node repulsion (overlapping) multiplier
             nodeOverlap: 50,
             // Ideal edge (non nested) length
             
             idealEdgeLength: function(edge) {
-                return 20;
+                return 5;
             },
             // Divisor to compute edge forces
             edgeElasticity: function(edge) {
@@ -223,7 +224,7 @@ if(gotalldata) {
             // Whether to use threading to speed up the layout
             useMultitasking: true
     });
-    $(document).on('pjax:end',   function() { NProgress.done();});
+    
 }
 else{
     setTimeout(function(){loadingLoop3();}, 2000);
