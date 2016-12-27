@@ -19,11 +19,25 @@
 //= require bootstrap/dropdown
 //= require turbolinks
 //= require jquery-ui
+//= require nprogress
+//= require nprogress-turbolinks
+//= require nprogress-ajax
+NProgress.configure({
+  showSpinner: true,
+  ease: 'ease',
+  speed: 500,
+  parent: 'body'
+});
 var steemaccount;
+var gotfollowers;
+var gotfollows;
+var gotalldata;
+$(document).on('pjax:start', function() { NProgress.start(); });
 document.addEventListener('turbolinks:load', function(){
+gotfollowers = false;
+gotfollows = false;
+gotalldata = false;
 steemaccount = window.currentUser.steemaccount.toString().toLowerCase();
-/*global $*/
-/*global cytoscape*/
 var cy = window.cy = cytoscape({
     container: document.getElementById('cy'),
     boxSelectionEnabled: false,
@@ -34,7 +48,24 @@ var cy = window.cy = cytoscape({
         name: 'cose'
     },
     style: [{
-            selector: 'node',
+        selector: 'node',
+            style: {
+                'height': 10,
+                'width': 10,
+                'background-color': '#FEE003',
+                'label': 'data(label)',
+                'color': '#FFFFFF',
+                'text-transform': 'lowercase',
+                'font-size': 8,
+                'font-weight': 'bold',
+                'font-style': 'italic',
+                'font-family': '"Times New Roman", Georgia, Serif',
+                'text-shadow-blur': 100,
+                'shadow-blur': 10,
+                'background-opacity': 0.6
+            }
+        }, {
+            selector: '.followers',
             style: {
                 'height': 10,
                 'width': 10,
@@ -115,12 +146,30 @@ var cy = window.cy = cytoscape({
               }]
 });
 addFollowers();
-setTimeout(function() {
-    addFollows();
-}, 1500);
-
-/*global layout*/
-setTimeout(function() {
+function loadingLoop1(){
+if(gotfollowers){
+addFollows();
+}
+else{
+    setTimeout(function(){ loadingLoop1(); }, 1000);
+};
+}
+loadingLoop1();
+function loadingLoop2(){
+if(gotfollowers & gotfollows){
+    gotalldata = true;
+    //console.log("Completed getting data");
+}
+else{
+    setTimeout(function(){ loadingLoop2(); }, 1000);
+};
+}
+loadingLoop2();
+function loadingLoop3(){
+if(gotalldata) {
+    
+    gotfollowers = false;
+    gotfollows = false;
     cy.layout({name: 'cose',
             // Called on `layoutready`
             ready: function() {},
@@ -149,14 +198,15 @@ setTimeout(function() {
                 return 500;
             },
             // Node repulsion (overlapping) multiplier
-            nodeOverlap: 10,
+            nodeOverlap: 50,
             // Ideal edge (non nested) length
+            
             idealEdgeLength: function(edge) {
-                return 25;
+                return 20;
             },
             // Divisor to compute edge forces
             edgeElasticity: function(edge) {
-                return 50;
+                return 100;
             },
             // Nesting factor (multiplier) to compute ideal edge length for nested edges
             nestingFactor: 5,
@@ -171,29 +221,35 @@ setTimeout(function() {
             // Lower temperature threshold (below this point the layout will end)
             minTemp: 1.0,
             // Whether to use threading to speed up the layout
-            useMultitasking: true});
-}, 25000);
-//setTimeout(function() {
-//    addEdges();
-//}, 9000);
+            useMultitasking: true
+    });
+    $(document).on('pjax:end',   function() { NProgress.done();});
+}
+else{
+    setTimeout(function(){loadingLoop3();}, 2000);
+}
+}
+loadingLoop3();
 });
 function addFollowers(){
-console.log("adding followers");
+//console.log("adding followers");
 $.getJSON('/accounts/' + steemaccount + '/followers.json', function(followerS) {
+   cy.startBatch();
    for (var prop in followerS) {
        cy.add({group: "nodes", data: {id: followerS[prop], label: followerS[prop]}, position: {}});
        cy.add({group: "edges", data: {source: followerS[prop], target: steemaccount}});
-        }
-        console.log("Followers:" + followerS.length);
-        cy.emit('done followers');
+       cy.getElementById(followerS[prop]).addClass('followers')
+        };
+        cy.endBatch();
+        //console.log("Followers:" + followerS.length);
+        gotfollowers = true;
     });
-cy.layout({name: 'cose'});
 }
 function addFollows(){
-console.log("adding follows");
+//console.log("adding follows");
 $.getJSON('/accounts/' + steemaccount + '/follows.json', function(followS) {
+           cy.startBatch();
            for (var prop in followS) {
-               /*global cy*/
                if (cy.getElementById(followS[prop]).length==0){
                cy.add({group: "nodes", data: {id: followS[prop], label: followS[prop]}, position: {}});
                cy.add({group: "edges", data: {source: followS[prop], target: steemaccount}});
@@ -201,7 +257,10 @@ $.getJSON('/accounts/' + steemaccount + '/follows.json', function(followS) {
                }
                else {cy.getElementById(followS[prop]).addClass('mutual')}
                }
-        console.log("Follows:" + followS.length);
+               cy.endBatch();
+           
+        //console.log("Follows:" + followS.length);
+        gotfollows = true;
     });
 }
 function addEdges(){
@@ -212,4 +271,4 @@ cy.nodes().forEach(function( ele ){
         ele.scratch(JSON.stringify(accountsdata));
         });
     });
-}
+};

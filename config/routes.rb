@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
   get :secret, to: 'pages#secret', as: :secret
   get :legend, to: 'pages#legend'
+  get :tech, to: 'pages#tech'
   resources :widgets
     devise_for :users
     devise_for :admins

@@ -47,6 +47,11 @@
 </p>
 
 <p>
+  <strong>Witness Votes Amount:</strong>
+  <%= @account.witness_votes.length %>
+</p>
+
+<p>
   <strong>Global:</strong>
 <%= api = Radiator::Api.new
 response = api.get_dynamic_global_properties

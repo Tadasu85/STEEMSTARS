@@ -7,4 +7,6 @@ class PagesController < ApplicationController
     end
     def legend
     end
+    def tech
+    end
 end

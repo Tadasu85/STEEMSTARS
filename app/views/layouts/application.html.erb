@@ -6,6 +6,7 @@
       <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Steemstars" %>">
       <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
       <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
+      <meta name="turbolinks-cache-control" content="no-cache">
       <%= csrf_meta_tags %>
       <!-- required: realtime support framework -->
       <%= realtime_support %>
@@ -26,6 +27,7 @@
     <% if user_signed_in? %>
       <li><%= link_to 'Galaxy', secret_path %></li>
       <li><%= link_to 'Legend', legend_path %></li>
+      <li><%= link_to 'Tech Tree', tech_path %></li>
     <% end %>
   </ul>
         <ul class="nav navbar-nav pull-right">
