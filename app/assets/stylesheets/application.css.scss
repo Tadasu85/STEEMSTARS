@@ -75,9 +75,7 @@ ul.nav li {
 div.form-group {
   display: inline;
 }
-.pull-left {
-  display: inline;
-}
+
 ul.nav li a {
   padding: 10px 15px 10px;
   color: #777777;
@@ -117,4 +115,12 @@ footer {
   position: absolute;
   top: 0;
   left: 0;
+}
+#gameplay-bar {
+  display: inline;
+}
+#gameplay-bar > input[type="button"] {
+  font-size: 10px;
+  color: #f9f9f9;
+  background-color: #3b3b3b;
 }

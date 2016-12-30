@@ -22,6 +22,7 @@
 //= require nprogress
 //= require nprogress-turbolinks
 //= require nprogress-ajax
+
 NProgress.configure({
   showSpinner: true,
   ease: 'ease',
@@ -32,12 +33,14 @@ var steemaccount;
 var gotfollowers;
 var gotfollows;
 var gotalldata;
+
 $(document).on('pjax:start', function() { NProgress.start(); });
 document.addEventListener('turbolinks:load', function(){
 gotfollowers = false;
 gotfollows = false;
 gotalldata = false;
 steemaccount = window.currentUser.steemaccount.toString().toLowerCase();
+
 var cy = window.cy = cytoscape({
     container: document.getElementById('cy'),
     boxSelectionEnabled: false,
@@ -145,6 +148,8 @@ var cy = window.cy = cytoscape({
                    },
             classes: 'background'
               }]
+              
+              
 });
 addFollowers();
 function loadingLoop1(){
@@ -231,6 +236,8 @@ else{
 }
 }
 loadingLoop3();
+
+
 });
 function addFollowers(){
 //console.log("adding followers");
@@ -280,3 +287,4 @@ console.log("Saving" + jpg64)
 $('#jpg-eg').attr('src', jpg64);
 document.write('<img src="'+jpg64+'"/>');
 };
+
