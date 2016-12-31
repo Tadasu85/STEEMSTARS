@@ -148,8 +148,6 @@ var cy = window.cy = cytoscape({
                    },
             classes: 'background'
               }]
-              
-              
 });
 addFollowers();
 function loadingLoop1(){
@@ -180,7 +178,7 @@ if(gotalldata) {
             // Called on `layoutready`
             ready: function() {},
             // Called on `layoutstop`
-            stop: function() {$(document).on('pjax:end',   function() { NProgress.done();});},
+            stop: function() {$(document).on('pjax:end',function() { NProgress.done();});},
             // Whether to animate while running the layout
             animate: false,
             // The layout animates only after this many milliseconds
@@ -206,7 +204,6 @@ if(gotalldata) {
             // Node repulsion (overlapping) multiplier
             nodeOverlap: 50,
             // Ideal edge (non nested) length
-            
             idealEdgeLength: function(edge) {
                 return 5;
             },
@@ -236,7 +233,12 @@ else{
 }
 }
 loadingLoop3();
-
+//cy.on('tap', 'node', function(evt){
+//  console.log( 'tap ' + evt.cyTarget.id() );
+//  
+//  window.open('https://steemit.com/@'+evt.cyTarget.id(),'_blank');
+  
+//});
 
 });
 function addFollowers(){
@@ -244,7 +246,7 @@ function addFollowers(){
 $.getJSON('/accounts/' + steemaccount + '/followers.json', function(followerS) {
    cy.startBatch();
    for (var prop in followerS) {
-       cy.add({group: "nodes", data: {id: followerS[prop], label: followerS[prop]}, position: {}});
+       cy.add({group: "nodes", data: {id: followerS[prop], label: followerS[prop]}, position: {x: Math.random(0,10), y: Math.random(0,10)}});
        cy.add({group: "edges", data: {source: followerS[prop], target: steemaccount}});
        cy.getElementById(followerS[prop]).addClass('followers')
         };
@@ -259,7 +261,7 @@ $.getJSON('/accounts/' + steemaccount + '/follows.json', function(followS) {
            cy.startBatch();
            for (var prop in followS) {
                if (cy.getElementById(followS[prop]).length==0){
-               cy.add({group: "nodes", data: {id: followS[prop], label: followS[prop]}, position: {}});
+               cy.add({group: "nodes", data: {id: followS[prop], label: followS[prop]}, position: {x: Math.random(), y: Math.random()}});
                cy.add({group: "edges", data: {source: followS[prop], target: steemaccount}});
                cy.getElementById(followS[prop]).addClass('follows')
                }
@@ -288,3 +290,14 @@ $('#jpg-eg').attr('src', jpg64);
 document.write('<img src="'+jpg64+'"/>');
 };
 
+function viewonsteem() {
+    if(cy.$(':selected').isNode()){
+    window.open('https://steemit.com/@'+cy.$(':selected').attr("id"),'_blank');
+    }
+}
+function viewaccountinfo() {
+    if(cy.$(':selected').isNode()){
+    selectedNode = cy.$(':selected').attr("id");
+    Turbolinks.visit(/accounts/ + selectedNode)
+    }
+}
