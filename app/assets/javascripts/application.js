@@ -291,13 +291,14 @@ document.write('<img src="'+jpg64+'"/>');
 };
 
 function viewonsteem() {
+selectedNode = cy.$(':selected').attr("id");
     if(cy.$(':selected').isNode()){
-    window.open('https://steemit.com/@'+cy.$(':selected').attr("id"),'_blank');
+    window.open('https://steemit.com/@'+selectedNode,'_blank');
     }
 }
 function viewaccountinfo() {
+selectedNode = cy.$(':selected').attr("id");
     if(cy.$(':selected').isNode()){
-    selectedNode = cy.$(':selected').attr("id");
-    Turbolinks.visit(/accounts/ + selectedNode)
+    Turbolinks.visit(/accounts/ + selectedNode);
     }
 }

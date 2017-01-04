@@ -1,4 +1,5 @@
 <center>
+  <div id=data>
 <h1>Account: <%= @id %></h1>
 
 <p>
@@ -7,8 +8,17 @@
 </p>
 
 <p>
-  <strong>Network Reputation:</strong>
-  <%= @account.reputation %>
+  <strong>Network Reputation Raw:</strong>
+  <%= number_to_human(@account.reputation.to_i) %>
+</p>
+
+<p>
+  <strong>Network Reputation Level:</strong>
+  <%raw = @account.reputation.to_i%>
+  <%level = Math.log10(@account.reputation.to_i.abs)%>
+  <%level = [level - 9, 0].max%>
+  <%level = (level * 9) + 25%>
+  <%=number_to_human(level)%>
 </p>
 
 <p>
@@ -28,7 +38,7 @@
 
 <p>
   <strong>STEEM Balance:</strong>
-  <%= @account.balance %>
+  <%= @account.balance.to_i %>
 </p>
 
 <p>
@@ -38,7 +48,7 @@
 
 <p>
   <strong>VESTS Balance:</strong>
-  <%= @account.vesting_shares %>
+  <%=number_to_human(@account.vesting_shares.to_i) %>
 </p>
 
 <p>
@@ -52,11 +62,10 @@
 </p>
 
 <p>
-  <strong>Global:</strong>
+  <strong>Global Steem:</strong>
 <%= api = Radiator::Api.new
 response = api.get_dynamic_global_properties
-response.result.virtual_supply %>
+number_with_delimiter(response.result.virtual_supply.to_i) %>
 </p>
-<%= link_to 'Followers', account_followers_path(params[:id]) %>
-<%= link_to 'Follows', account_follows_path(params[:id]) %>
+</div>
 </center>
