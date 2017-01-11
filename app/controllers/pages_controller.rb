@@ -5,8 +5,6 @@ class PagesController < ApplicationController
     def secret
         render :head => true
     end
-    def legend
-    end
     def tech
     end
 end

@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
-//= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require bootstrap/dropdown
@@ -33,7 +32,9 @@ var steemaccount;
 var gotfollowers;
 var gotfollows;
 var gotalldata;
-
+var cytoscape = require('cytoscape');
+var cycola = require('cytoscape-cola');
+var cola = require('cola');
 $(document).on('pjax:start', function() { NProgress.start(); });
 document.addEventListener('turbolinks:load', function(){
 gotfollowers = false;
@@ -144,11 +145,13 @@ var cy = window.cy = cytoscape({
     elements: [{
             data: {
                 id: steemaccount,
-                label: steemaccount
+                label: steemaccount,
+                
                    },
             classes: 'background'
               }]
 });
+cycola( cytoscape, cola ); // register extension
 addFollowers();
 function loadingLoop1(){
 if(gotfollowers){
@@ -171,19 +174,70 @@ else{
 loadingLoop2();
 function loadingLoop3(){
 if(gotalldata) {
-    
     gotfollowers = false;
     gotfollows = false;
-    cy.layout({name: 'cose',
-            // Called on `layoutready`
-            ready: function() {},
+    var currentNode = cy.collection('.mutual');
+    currentNode.connectedEdges().addClass('mutualedge');
+    cy.getElementById(steemaccount).addClass('parent');
+    /*cy.$('.mutual').layout({name: 'cose', 
+    nodeRepulsion: function(node) {
+    return 500;},
+    //idealEdgeLength: function(edge) {
+    //return 5;},   
+    //edgeElasticity: function(edge) {
+    //return 100;},
+    minTemp: 1.0,
+    useMultitasking: false,
+    initialTemp: 20000,
+    numIter: 5,
+    nodeOverlap: 50,
+    });*/
+    /*cy.$('.follows').layout({name: 'cose', 
+    nodeRepulsion: function(node) {
+    return 500;},
+    //idealEdgeLength: function(edge) {
+    //return 5;},   
+    //edgeElasticity: function(edge) {
+    //return 100;},
+    minTemp: 1.0,
+    useMultitasking: false,
+    initialTemp: 20000,
+    numIter: 5,
+    nodeOverlap: 50,
+    });*/
+    x1 = 200;
+    y1 = 200;
+    w = 1000;
+    h = 1000;
+    cy.$('.followers').layout({name: 'cola', 
+    fit: false, // whether to fit to viewport
+    padding: 0, // fit padding
+    boundingBox: false,
+    animate: false, // whether to transition the node positions
+    animationDuration: 500, // duration of animation in ms if enabled
+    animationEasing: undefined, // easing of animation if enabled
+    ready: undefined, // callback on layoutready
+    stop: function() {$(document).on('pjax:end',function() {NProgress.done();});}, // callback on layoutstop
+    });
+    /*cy.$('.parent').layout({name: 'cose', 
+    nodeRepulsion: function(node) {
+    return 100;},
+    idealEdgeLength: function(edge) {
+    return 50;},   
+    edgeElasticity: function(edge) {
+    return 0;},
+    minTemp: 1.0,
+    useMultitasking: false,
+    initialTemp: 500,
+    numIter: 50,
+    nodeOverlap: 100,
+    gravity: 80,
+    randomize: true,
+    fit: true,
+    });*/
+     /*cy.layout({name: 'cose',
             // Called on `layoutstop`
-            stop: function() {$(document).on('pjax:end',function() { NProgress.done();});},
-            // Whether to animate while running the layout
-            animate: false,
-            // The layout animates only after this many milliseconds
-            // (prevents flashing on fast runs)
-            animationThreshold: 0,
+            stop: function() {$(document).on('pjax:end',function() {NProgress.done();});},
             // Number of iterations between consecutive screen positions update
             // (0 -> only updated on the end)
             refresh: 50,
@@ -199,26 +253,42 @@ if(gotalldata) {
             componentSpacing: 50,
             // Node repulsion (non overlapping) multiplier
             nodeRepulsion: function(node) {
-                return 1;
+               return 500;
+               //return node.hasClass('.mutual') ? true : 500;
+               //return node.hasClass('.follows') ? true : 9999;
+               //return node.hasClass('.followers') ? true : 1;
             },
             // Node repulsion (overlapping) multiplier
             nodeOverlap: 50,
             // Ideal edge (non nested) length
             idealEdgeLength: function(edge) {
-                return 5;
+                //return 5;
+                return edge.hasClass('.mutualedge') ? true : 200;
+                //return edge.hasClass('.followsedge') ? true : 5000;
+                //return edge.hasClass('.followersedge') ? true : 1000;
             },
             // Divisor to compute edge forces
             edgeElasticity: function(edge) {
-                return 100;
+                //return 100;
+                if(edge.hasClass('.mutualedge')){
+                return 1;
+                }
+                if(edge.hasClass('.followsedge')){
+                return 1000;
+                }
+                else{
+                return 5000;
+                }
+                //return edge.hasClass('.followersedge') ? true : -1000;
             },
             // Nesting factor (multiplier) to compute ideal edge length for nested edges
             nestingFactor: 5,
             // Gravity force (constant)
             gravity: 80,
             // Maximum number of iterations to perform
-            numIter: 1000,
+            numIter: 10000,
             // Initial temperature (maximum node displacement)
-            initialTemp: 200,
+            initialTemp: 20000,
             // Cooling factor (how the temperature is reduced between consecutive iterations
             coolingFactor: 0.95,
             // Lower temperature threshold (below this point the layout will end)
@@ -226,13 +296,15 @@ if(gotalldata) {
             // Whether to use threading to speed up the layout
             useMultitasking: true
     });
-    
+*/
 }
 else{
     setTimeout(function(){loadingLoop3();}, 2000);
 }
 }
 loadingLoop3();
+
+//cy.layout()
 //cy.on('tap', 'node', function(evt){
 //  console.log( 'tap ' + evt.cyTarget.id() );
 //  
@@ -246,8 +318,8 @@ function addFollowers(){
 $.getJSON('/accounts/' + steemaccount + '/followers.json', function(followerS) {
    cy.startBatch();
    for (var prop in followerS) {
-       cy.add({group: "nodes", data: {id: followerS[prop], label: followerS[prop]}, position: {x: Math.random(0,10), y: Math.random(0,10)}});
-       cy.add({group: "edges", data: {source: followerS[prop], target: steemaccount}});
+       cy.add({group: "nodes", data: {id: followerS[prop], label: followerS[prop]}, position: {}});
+       cy.add({group: "edges", data: {source: followerS[prop], target: steemaccount}}).addClass('followersedge');
        cy.getElementById(followerS[prop]).addClass('followers')
         };
         cy.endBatch();
@@ -258,19 +330,20 @@ $.getJSON('/accounts/' + steemaccount + '/followers.json', function(followerS) {
 function addFollows(){
 //console.log("adding follows");
 $.getJSON('/accounts/' + steemaccount + '/follows.json', function(followS) {
-           cy.startBatch();
+          cy.startBatch();
            for (var prop in followS) {
                if (cy.getElementById(followS[prop]).length==0){
-               cy.add({group: "nodes", data: {id: followS[prop], label: followS[prop]}, position: {x: Math.random(), y: Math.random()}});
-               cy.add({group: "edges", data: {source: followS[prop], target: steemaccount}});
+               cy.add({group: "nodes", data: {id: followS[prop], label: followS[prop]}, position: {}});
+               cy.add({group: "edges", data: {source: followS[prop], target: steemaccount}}).addClass('followsedge');
                cy.getElementById(followS[prop]).addClass('follows')
                }
-               else {cy.getElementById(followS[prop]).addClass('mutual')}
+               else {
+               cy.getElementById(followS[prop]).addClass('mutual')
+               cy.getElementById(followS[prop]).removeClass('followers')}
                }
-               cy.endBatch();
-           
-        //console.log("Follows:" + followS.length);
-        gotfollows = true;
+           cy.endBatch();
+           //console.log("Follows:" + followS.length);
+           gotfollows = true;
     });
 }
 function addEdges(){
@@ -282,6 +355,7 @@ cy.nodes().forEach(function( ele ){
         });
     });
 };
+module.exports = function () {
 function savegalaxy() {
 var jpg64 = cy.jpg({bg: 'black', full: false, scale: 1, maxWidth: 1020, maxHeight: 840});
 console.log("Saving" + jpg64)
@@ -292,13 +366,22 @@ document.write('<img src="'+jpg64+'"/>');
 
 function viewonsteem() {
 selectedNode = cy.$(':selected').attr("id");
-    if(cy.$(':selected').isNode()){
-    window.open('https://steemit.com/@'+selectedNode,'_blank');
-    }
+if(cy.$(':selected').isNode()){
+window.open('https://steemit.com/@'+selectedNode,'_blank');
+}
 }
 function viewaccountinfo() {
 selectedNode = cy.$(':selected').attr("id");
-    if(cy.$(':selected').isNode()){
-    Turbolinks.visit(/accounts/ + selectedNode);
-    }
+if(cy.$(':selected').isNode()){
+Turbolinks.visit(/accounts/ + selectedNode);
+}
+}
+function legend() {
+document.getElementById('light').style.display='block';
+document.getElementById('fade').style.display='block';
+}
+function closelegend() {
+document.getElementById('light').style.display='none';
+document.getElementById('fade').style.display='none';
+}
 }

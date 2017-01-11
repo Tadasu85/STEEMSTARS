@@ -23,6 +23,7 @@ gem 'bootstrap-sass'
 gem 'rails_12factor'
 gem 'jquery-ui-rails'
 gem "nprogress-rails"
+gem 'browserify-rails'
 
 group :assets do
   gem 'sass-rails'

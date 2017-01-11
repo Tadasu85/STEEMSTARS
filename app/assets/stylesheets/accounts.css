@@ -2,11 +2,3 @@
   Place all the styles related to the matching controller here.
   They will automatically be included in application.css.
 */
-
-    #cy {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0px;
-        left: 0px;
-    }

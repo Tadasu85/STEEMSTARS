@@ -2,20 +2,22 @@
   "name": "steemstars",
   "version": "1.0.0",
   "dependencies": {
-        "socket.io": "1.0.x",
-        "redis": "0.7.3",
-        "pg": "2.11.0",
-        "underscore": "1.5.2",
-        "cookie": "0.1.x",
-        "sentry-node": "0.2.x",
-        "nodetime": "0.8.x",
-        "nodemon": "1.x",
-        "forever": "0.10.x",
-        "forever-monitor": "1.2.x",
-        "cytoscape": "2.7.13"
-    },
+    "browserify": "^6.3.4",
+    "browserify-incremental": "^1.5.0",
+    "cookie": "0.1.x",
+    "cytoscape": "2.7.13",
+    "forever": "0.10.x",
+    "forever-monitor": "1.2.x",
+    "nodemon": "1.x",
+    "nodetime": "0.8.x",
+    "pg": "2.11.0",
+    "redis": "0.7.3",
+    "sentry-node": "0.2.x",
+    "socket.io": "1.0.x",
+    "underscore": "1.5.2"
+  },
   "engines": {
-  "node": "4.5.0"
+    "node": "4.5.0"
   },
   "description": "node server for steemstars",
   "main": "/realtime-server/realtime-server.js",
@@ -35,7 +37,7 @@
     "steemstars"
   ],
   "author": "raymon johnstone",
-  "license": "ISC",
+  "license": "CC-BY-SA-4.0",
   "bugs": {
     "url": "https://github.com/steem-third-party/STEEMSTARS/issues"
   },
