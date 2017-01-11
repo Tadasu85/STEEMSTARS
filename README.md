@@ -1,10 +1,12 @@
+
 [![Build Status](https://travis-ci.org/steem-third-party/STEEMSTARS.svg?branch=master)](https://travis-ci.org/steem-third-party/STEEMSTARS)
 [![Code Climate](https://codeclimate.com/github/steem-third-party/STEEMSTARS/badges/gpa.svg)](https://codeclimate.com/github/steem-third-party/STEEMSTARS)
 [![Test Coverage](https://codeclimate.com/github/steem-third-party/STEEMSTARS/badges/coverage.svg)](https://codeclimate.com/github/steem-third-party/STEEMSTARS/coverage)
 [![Issue Count](https://codeclimate.com/github/steem-third-party/STEEMSTARS/badges/issue_count.svg)](https://codeclimate.com/github/steem-third-party/STEEMSTARS)
 
+![alt tag](https://github.com/Tadasu85/STEEMSTARS/blob/master/app/assets/images/banner.png)
 
-SteemStars is admittedly somewhat of an ambitious project but nonetheless.
+
 
 SteemStars is a game in which we will use the steem blockchain to generate some of our game data.
 
