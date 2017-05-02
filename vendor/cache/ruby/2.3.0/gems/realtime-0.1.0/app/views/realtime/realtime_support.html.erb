@@ -1,0 +1,37 @@
+<script type='text/javascript'>
+
+	window.realtime = {};
+	window.realtime.messageQueue = [];
+	window.realtime.enabled = false;
+
+</script>
+
+<script src="<%= realtime_server_url %>/socket.io/socket.io.js"></script>
+
+<script type='text/javascript'>
+
+	if (typeof io != 'undefined' && io != null) {
+		window.realtime.token = '<%= realtime_token %>';
+		window.realtime.userId = '<%= realtime_user_id %>';
+		window.realtime.socketIo = io.connect('<%= realtime_server_url %>/?_rtUserId=<%= @realtime_user_id %>&_rtToken=<%= @realtime_token %>');
+	}
+
+  <%= render "realtime/realtime_loader" %>
+
+</script>
+
+<% if message_handler %>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
+
+  <script type='text/javascript'>
+    <%= render "realtime/realtime_message_handler" %>
+  </script>
+<% end %>
+
+<% if message_console_logger %>
+  <script type='text/javascript'>
+    <%= render "realtime/realtime_message_console_logger" %>
+  </script>
+<% end %>

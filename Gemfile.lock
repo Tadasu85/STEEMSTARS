@@ -127,8 +127,6 @@ GEM
     multi_json (1.12.1)
     net-http-persistent (2.9.4)
     nio4r (1.2.1)
-    node (0.0.2)
-      eventmachine
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
     nprogress-rails (0.2.0.2)
@@ -253,7 +251,6 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks
   jquery-ui-rails
-  node
   nprogress-rails
   pg
   radiator!
@@ -261,7 +258,7 @@ DEPENDENCIES
   rails-controller-testing
   rails_12factor
   rails_layout
-  rake
+  rake (>= 11.3.0)
   realtime
   redis
   responders (~> 2.2.0)
@@ -277,4 +274,4 @@ RUBY VERSION
    ruby 2.3.0p0
 
 BUNDLED WITH
-   1.13.6
+   1.14.4

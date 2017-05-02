@@ -205,11 +205,11 @@ if(gotalldata) {
     numIter: 5,
     nodeOverlap: 50,
     });*/
-    x1 = 200;
+    /*x1 = 200;
     y1 = 200;
     w = 1000;
     h = 1000;
-    cy.$('.followers').layout({name: 'cola', 
+    cy.$('.followers').layout({name: 'cose', 
     fit: false, // whether to fit to viewport
     padding: 0, // fit padding
     boundingBox: false,
@@ -218,7 +218,7 @@ if(gotalldata) {
     animationEasing: undefined, // easing of animation if enabled
     ready: undefined, // callback on layoutready
     stop: function() {$(document).on('pjax:end',function() {NProgress.done();});}, // callback on layoutstop
-    });
+    });*/
     /*cy.$('.parent').layout({name: 'cose', 
     nodeRepulsion: function(node) {
     return 100;},
@@ -235,7 +235,7 @@ if(gotalldata) {
     randomize: true,
     fit: true,
     });*/
-     /*cy.layout({name: 'cose',
+     cy.layout({name: 'cose',
             // Called on `layoutstop`
             stop: function() {$(document).on('pjax:end',function() {NProgress.done();});},
             // Number of iterations between consecutive screen positions update
@@ -250,43 +250,21 @@ if(gotalldata) {
             // Randomize the initial positions of the nodes (true) or use existing positions (false)
             randomize: true,
             // Extra spacing between components in non-compound graphs
-            componentSpacing: 50,
+            componentSpacing: 200,
             // Node repulsion (non overlapping) multiplier
-            nodeRepulsion: function(node) {
-               return 500;
-               //return node.hasClass('.mutual') ? true : 500;
-               //return node.hasClass('.follows') ? true : 9999;
-               //return node.hasClass('.followers') ? true : 1;
-            },
+            
             // Node repulsion (overlapping) multiplier
-            nodeOverlap: 50,
+            nodeOverlap: 500,
             // Ideal edge (non nested) length
-            idealEdgeLength: function(edge) {
-                //return 5;
-                return edge.hasClass('.mutualedge') ? true : 200;
-                //return edge.hasClass('.followsedge') ? true : 5000;
-                //return edge.hasClass('.followersedge') ? true : 1000;
-            },
+           
             // Divisor to compute edge forces
-            edgeElasticity: function(edge) {
-                //return 100;
-                if(edge.hasClass('.mutualedge')){
-                return 1;
-                }
-                if(edge.hasClass('.followsedge')){
-                return 1000;
-                }
-                else{
-                return 5000;
-                }
-                //return edge.hasClass('.followersedge') ? true : -1000;
-            },
+            
             // Nesting factor (multiplier) to compute ideal edge length for nested edges
             nestingFactor: 5,
             // Gravity force (constant)
             gravity: 80,
             // Maximum number of iterations to perform
-            numIter: 10000,
+            numIter: 1000,
             // Initial temperature (maximum node displacement)
             initialTemp: 20000,
             // Cooling factor (how the temperature is reduced between consecutive iterations
@@ -296,21 +274,13 @@ if(gotalldata) {
             // Whether to use threading to speed up the layout
             useMultitasking: true
     });
-*/
+
 }
 else{
     setTimeout(function(){loadingLoop3();}, 2000);
 }
 }
 loadingLoop3();
-
-//cy.layout()
-//cy.on('tap', 'node', function(evt){
-//  console.log( 'tap ' + evt.cyTarget.id() );
-//  
-//  window.open('https://steemit.com/@'+evt.cyTarget.id(),'_blank');
-  
-//});
 
 });
 function addFollowers(){
@@ -345,43 +315,4 @@ $.getJSON('/accounts/' + steemaccount + '/follows.json', function(followS) {
            //console.log("Follows:" + followS.length);
            gotfollows = true;
     });
-}
-function addEdges(){
-console.log("adding edges");
-cy.nodes().forEach(function( ele ){
-    $.getJSON('/accounts/' + ele.id() + '/followers.json', function(accountsdata){
-        console.log(JSON.stringify(accountsdata));
-        ele.scratch(JSON.stringify(accountsdata));
-        });
-    });
-};
-module.exports = function () {
-function savegalaxy() {
-var jpg64 = cy.jpg({bg: 'black', full: false, scale: 1, maxWidth: 1020, maxHeight: 840});
-console.log("Saving" + jpg64)
-// put the png data in an img tag
-$('#jpg-eg').attr('src', jpg64);
-document.write('<img src="'+jpg64+'"/>');
-};
-
-function viewonsteem() {
-selectedNode = cy.$(':selected').attr("id");
-if(cy.$(':selected').isNode()){
-window.open('https://steemit.com/@'+selectedNode,'_blank');
-}
-}
-function viewaccountinfo() {
-selectedNode = cy.$(':selected').attr("id");
-if(cy.$(':selected').isNode()){
-Turbolinks.visit(/accounts/ + selectedNode);
-}
-}
-function legend() {
-document.getElementById('light').style.display='block';
-document.getElementById('fade').style.display='block';
-}
-function closelegend() {
-document.getElementById('light').style.display='none';
-document.getElementById('fade').style.display='none';
-}
 }

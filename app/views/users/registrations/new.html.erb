@@ -9,6 +9,10 @@
     <%= f.email_field :email, autofocus: true %>
   </div>
   <div class="field">
+    <%= f.label :steemaccount %>
+    <%= f.text_field :steemaccount %>
+  </div>
+  <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>

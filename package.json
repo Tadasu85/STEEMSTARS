@@ -9,15 +9,13 @@
     "forever": "0.10.x",
     "forever-monitor": "1.2.x",
     "nodemon": "1.x",
-    "nodetime": "0.8.x",
-    "pg": "2.11.0",
     "redis": "0.7.3",
     "sentry-node": "0.2.x",
-    "socket.io": "1.0.x",
+    "socket.io": "x",
     "underscore": "1.5.2"
   },
   "engines": {
-    "node": "4.5.0"
+    "node": "4.7.3"
   },
   "description": "node server for steemstars",
   "main": "/realtime-server/realtime-server.js",

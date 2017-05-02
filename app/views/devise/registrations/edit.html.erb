@@ -1,3 +1,4 @@
+<div id=data>
 <center>
 <% header "Edit #{resource_name.to_s.humanize}" %>
 
@@ -16,24 +17,25 @@
       <span class="label label-info">Currently waiting confirmation for: <%= resource.unconfirmed_email %></span>
     <% end %>
   </div>
+    <div class="form-group">
+    <%= f.label :current_password %>
+    <%= f.password_field :current_password, autocomplete: "off", class: 'form-control' %>
+    <span class="help-block">Your current password is needed to confirm ANY changes.</span>
+  </div>
+  <%= f.submit "Update", class: 'btn btn-primary' %>
+  <br/>
+  <br/>
   <div class="form-group">
-    <%= f.label :password %>
+    <%= f.label :new_password %>
     <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
-    <span class="help-block">leave blank if you don't want to change it</span>
+    <span class="help-block">Leave this blank if you don't want to change your password.</span>
   </div>
 
   <div class="form-group">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
   </div>
-
-  <div class="form-group">
-    <%= f.label :current_password %>
-    <%= f.password_field :current_password, autocomplete: "off", class: 'form-control' %>
-    <span class="help-block">we need your current password to confirm your changes</span>
-  </div>
-
-  <%= f.submit "Update", class: 'btn btn-primary' %>
+  
 <% end %>
 
 <h3>Cancel my account</h3>
@@ -44,3 +46,4 @@
 </p>
 </center>
 <%= link_to "Back", :back, class: 'btn btn-default btn-sm' %>
+</div>
