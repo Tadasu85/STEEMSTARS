@@ -1,7 +1,0 @@
-javascript:
-  main:
-    require:
-      - a_huge_library
-  secondary:
-    external:
-      - a_huge_library

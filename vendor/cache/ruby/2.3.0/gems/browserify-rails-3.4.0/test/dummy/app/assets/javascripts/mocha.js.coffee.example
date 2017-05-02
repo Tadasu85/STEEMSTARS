@@ -1,4 +1,0 @@
-f = require("./foo")
-
-hello = ->
-  alert("Hello browserify #{f 5}")
