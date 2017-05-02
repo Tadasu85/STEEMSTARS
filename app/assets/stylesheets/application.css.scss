@@ -47,12 +47,20 @@ body{
 }
 #cy {
   position: relative;
-  height: 740px;
+  height: 85vh;
+  width: 93vw;
   left: 0;
   top: 0;
   right: 0;
   bottom: 0;
   z-index: 999;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  }
+.cxtmenu-disabled {
+	opacity: 0.333;
+	overflow-x: hidden;
+  overflow-y: hidden;
   }
 h1 {
   opacity: 0.5;
@@ -160,19 +168,19 @@ z-index:1002;
 overflow: auto;
 border-radius: 4px;
 }
-.close {
+#closelegend {
 cursor: pointer;
 color: white;
 border: 1px solid #AEAEAE;
 border-radius: 30px;
 background: #605F61;
+float: right;
 font-size: 31px;
 font-weight: bold;
-display: inline-block;
 line-height: 0px;
 padding: 11px 3px;
 }
-.close:before{
+#closelegend:before{
  content: "×";
 }
 ul {

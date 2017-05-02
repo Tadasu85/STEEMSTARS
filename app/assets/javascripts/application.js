@@ -33,8 +33,7 @@ var gotfollowers;
 var gotfollows;
 var gotalldata;
 var cytoscape = require('cytoscape');
-var cycola = require('cytoscape-cola');
-var cola = require('cola');
+var cxtmenu = require('cytoscape-cxtmenu');
 $(document).on('pjax:start', function() { NProgress.start(); });
 document.addEventListener('turbolinks:load', function(){
 gotfollowers = false;
@@ -63,14 +62,14 @@ var cy = window.cy = cytoscape({
                 'label': 'data(label)',
                 'color': '#FFFFFF',
                 'text-transform': 'lowercase',
-                'font-size': 12,
+                'font-size': 8,
                 'font-weight': 'bold',
                 'font-style': 'italic',
                 'font-family': '"Times New Roman", Georgia, Serif',
                 'text-shadow-blur': 100,
                 'shadow-blur': 10,
                 'background-opacity': 0.6,
-                'min-zoomed-font-size': 16
+                'min-zoomed-font-size': 12
             }
         }, {
             selector: '.followers',
@@ -130,9 +129,27 @@ var cy = window.cy = cytoscape({
                 'height': 20,
                 'width': 20,
                 'label': 'data(label)',
-                'font-size': 18,
+                'font-size': 8,
                 'color': '#FFFFFF',
                 'text-transform': 'uppercase',
+                'font-weight': 'bold',
+                'font-style': 'italic',
+                'font-family': '"Times New Roman", Georgia, Serif',
+                'text-shadow-blur': 100,
+                'shadow-blur': 10,
+                'background-opacity': 0.6
+            }
+            },
+            {
+            selector: '.parent',
+            style: {
+                'background-color': 'black',
+                'height': 12,
+                'width': 12,
+                'label': 'data(label)',
+                'font-size': 18,
+                'color': '#FFFFFF',
+                'text-transform': 'lowercase',
                 'font-weight': 'bold',
                 'font-style': 'italic',
                 'font-family': '"Times New Roman", Georgia, Serif',
@@ -151,7 +168,32 @@ var cy = window.cy = cytoscape({
             classes: 'background'
               }]
 });
-cycola( cytoscape, cola ); // register extension
+cxtmenu( cytoscape, cxtmenu ); // register extension
+cy.cxtmenu({
+	selector: 'node',
+	commands: [
+		{
+		content: 'View On Steem',
+		select: function(ele)
+			{
+			var selectedNode = ele.data('label');
+            window.open('https://steemit.com/@'+selectedNode,'_blank');
+            }
+		
+		}]
+	});
+    cy.cxtmenu({
+	    selector: 'core',
+	    commands: [
+	        {
+	            content: 'View Legend',
+		select: function(ele){
+			    document.getElementById('light').style.display='block';
+                document.getElementById('fade').style.display='block';
+		      }
+        }]
+    });
+
 addFollowers();
 function loadingLoop1(){
 if(gotfollowers){
@@ -179,63 +221,7 @@ if(gotalldata) {
     var currentNode = cy.collection('.mutual');
     currentNode.connectedEdges().addClass('mutualedge');
     cy.getElementById(steemaccount).addClass('parent');
-    /*cy.$('.mutual').layout({name: 'cose', 
-    nodeRepulsion: function(node) {
-    return 500;},
-    //idealEdgeLength: function(edge) {
-    //return 5;},   
-    //edgeElasticity: function(edge) {
-    //return 100;},
-    minTemp: 1.0,
-    useMultitasking: false,
-    initialTemp: 20000,
-    numIter: 5,
-    nodeOverlap: 50,
-    });*/
-    /*cy.$('.follows').layout({name: 'cose', 
-    nodeRepulsion: function(node) {
-    return 500;},
-    //idealEdgeLength: function(edge) {
-    //return 5;},   
-    //edgeElasticity: function(edge) {
-    //return 100;},
-    minTemp: 1.0,
-    useMultitasking: false,
-    initialTemp: 20000,
-    numIter: 5,
-    nodeOverlap: 50,
-    });*/
-    /*x1 = 200;
-    y1 = 200;
-    w = 1000;
-    h = 1000;
-    cy.$('.followers').layout({name: 'cose', 
-    fit: false, // whether to fit to viewport
-    padding: 0, // fit padding
-    boundingBox: false,
-    animate: false, // whether to transition the node positions
-    animationDuration: 500, // duration of animation in ms if enabled
-    animationEasing: undefined, // easing of animation if enabled
-    ready: undefined, // callback on layoutready
-    stop: function() {$(document).on('pjax:end',function() {NProgress.done();});}, // callback on layoutstop
-    });*/
-    /*cy.$('.parent').layout({name: 'cose', 
-    nodeRepulsion: function(node) {
-    return 100;},
-    idealEdgeLength: function(edge) {
-    return 50;},   
-    edgeElasticity: function(edge) {
-    return 0;},
-    minTemp: 1.0,
-    useMultitasking: false,
-    initialTemp: 500,
-    numIter: 50,
-    nodeOverlap: 100,
-    gravity: 80,
-    randomize: true,
-    fit: true,
-    });*/
-     cy.layout({name: 'cose',
+cy.layout({name: 'cose',
             // Called on `layoutstop`
             stop: function() {$(document).on('pjax:end',function() {NProgress.done();});},
             // Number of iterations between consecutive screen positions update
@@ -266,7 +252,7 @@ if(gotalldata) {
             // Maximum number of iterations to perform
             numIter: 1000,
             // Initial temperature (maximum node displacement)
-            initialTemp: 20000,
+            initialTemp: 2000,
             // Cooling factor (how the temperature is reduced between consecutive iterations
             coolingFactor: 0.95,
             // Lower temperature threshold (below this point the layout will end)
@@ -281,6 +267,10 @@ else{
 }
 }
 loadingLoop3();
+$("#closelegend").on("click",function(){
+document.getElementById('light').style.display='none';
+document.getElementById('fade').style.display='none';
+});
 
 });
 function addFollowers(){
@@ -316,3 +306,6 @@ $.getJSON('/accounts/' + steemaccount + '/follows.json', function(followS) {
            gotfollows = true;
     });
 }
+
+
+

@@ -1,8 +1,5 @@
 
-[![Build Status](https://travis-ci.org/steem-third-party/STEEMSTARS.svg?branch=master)](https://travis-ci.org/steem-third-party/STEEMSTARS)
-[![Code Climate](https://codeclimate.com/github/steem-third-party/STEEMSTARS/badges/gpa.svg)](https://codeclimate.com/github/steem-third-party/STEEMSTARS)
-[![Test Coverage](https://codeclimate.com/github/steem-third-party/STEEMSTARS/badges/coverage.svg)](https://codeclimate.com/github/steem-third-party/STEEMSTARS/coverage)
-[![Issue Count](https://codeclimate.com/github/steem-third-party/STEEMSTARS/badges/issue_count.svg)](https://codeclimate.com/github/steem-third-party/STEEMSTARS)
+[![Build Status](https://travis-ci.org/Tadasu85/STEEMSTARS.svg?branch=master)](https://travis-ci.org/Tadasu85/STEEMSTARS)
 
 ![alt tag](https://github.com/Tadasu85/STEEMSTARS/blob/master/app/assets/images/banner.png)
 
@@ -23,6 +20,14 @@ rails server
 open your browser to localhost:3000
 
 SteemStars at the moment gives you a simple view of the people who are following you on the steem network.
+
+This Repo for STEEMSTARS is to be considered DEPRACATED, information about the currently in developement version can be found at :
+
+https://github.com/Tadasu85/steemstarssails
+
+or at :
+
+https://steemit.com/@steemstars-gtc
 
 If you dont know what the steem network is check it out at steemit.com
 
