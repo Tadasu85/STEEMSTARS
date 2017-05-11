@@ -264,7 +264,7 @@ DEPENDENCIES
   rails-controller-testing
   rails_12factor
   rails_layout
-  rake (>= 11.3.0)
+  rake
   realtime
   redis
   responders (~> 2.2.0)
@@ -280,4 +280,4 @@ RUBY VERSION
    ruby 2.3.0p0
 
 BUNDLED WITH
-   1.13.7
+   1.14.6
