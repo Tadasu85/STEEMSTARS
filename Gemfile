@@ -16,7 +16,7 @@ gem 'binding_of_caller'
 gem "rspec-rails"
 gem 'pg'
 gem 'turbolinks'
-gem 'rake', '>= 11.3.0'
+gem 'rake'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'rails_12factor'
