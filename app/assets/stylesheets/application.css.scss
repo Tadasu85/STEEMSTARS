@@ -43,7 +43,8 @@ body{
  background-image: url('background.png');
  background-repeat: no-repeat;
  background-size: cover;
- overflow-y: auto;
+ overflow-x: hidden;
+ overflow-y: hidden;
 }
 #cy {
   position: relative;

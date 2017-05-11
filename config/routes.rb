@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
+  root to: 'pages#index'
   authenticated :user do
     root :to => "pages#secret"
   end
-    root to: 'pages#index'
   resources :pages do
   end
   get :secret, to: 'pages#secret', as: :secret
-  get :tech, to: 'pages#tech'
   resources :widgets
     devise_for :users
     devise_for :admins
