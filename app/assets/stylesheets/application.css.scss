@@ -30,43 +30,34 @@
 .help-block {
   color: #FF0000;
 }
-.navbar{
-margin-bottom: 0px;
-}
-body {
-  font-family: helvetica, sans-serif;
-  font-size: 24px;
-  color: #FFFFFF;
-}
 body{
+ font-family: helvetica, sans-serif;
+ font-size: 24px;
+ color: #FFFFFF;
  min-height: vmax;
  background-image: url('background.png');
  background-repeat: no-repeat;
  background-size: cover;
- overflow-x: hidden;
- overflow-y: hidden;
+ overflow-x: auto;
+ overflow-y: auto;
 }
 #cy {
-  position: relative;
-  height: 85vh;
-  width: 93vw;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 999;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  }
+ height: 80vh;
+ z-index: 999;
+
+}
+.navbar{
+ margin-bottom: 0px;
+}
 .cxtmenu-disabled {
-	opacity: 0.333;
-	overflow-x: hidden;
-  overflow-y: hidden;
+ opacity: 0.333;
+ overflow-x: hidden;
+ overflow-y: hidden;
   }
 h1 {
-  opacity: 0.5;
-  font-size: 25px;
-  color: #FFFFFF;
+ opacity: 0.5;
+ font-size: 25px;
+ color: #FFFFFF;
   }
 header {
 /*  border: 1px solid #d4d4d4; */
